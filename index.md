@@ -16,5 +16,5 @@ Mathematical Civil Engineering (2009) Mathematics department, U. Chile. Advisor:
 
 ### Publications
 
-- M. Hadzic, G. Navarro, S. Shkoller, Local well-posedness and Global stability of the Two-phase Stefan problem. (Submitted). (Arxiv) [Link](https://arxiv.org/abs/1607.00681) 
-- R. Granero-Belinchon, G. Navarro, A. Ortega, On the effect of boundaries in the two-phase porous flow. Nonlinearity 28 (2015) 435-461.
+- M. Hadzic, G. Navarro, S. Shkoller, Local well-posedness and Global stability of the Two-phase Stefan problem. SIAM J. Math. Anal., 49(6), 4942–5006. (65 pages) [SIAM](https://epubs.siam.org/doi/abs/10.1137/16M1083207)[Arxiv](https://arxiv.org/abs/1607.00681)
+- R. Granero-Belinchon, G. Navarro, A. Ortega, On the effect of boundaries in the two-phase porous flow. Nonlinearity 28 (2015) 435-461. [IOPScience](https://iopscience.iop.org/article/10.1088/0951-7715/28/2/435) [Arxiv](https://arxiv.org/abs/1408.4079)
