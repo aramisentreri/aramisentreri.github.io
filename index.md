@@ -1,37 +1,20 @@
-## Welcome to Gustavo Navarro's Page
+## Welcome to my page
 
-You can use the [editor on GitHub](https://github.com/aramisentreri/aramisentreri.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+I am a re-purposed PhD in mathematics working in Algorithms for a tech startup in the Bay Area. In the past I worked mainly in problems related to Fluid dynamics and Free boundary problems. My thesis was on the local and global well-posedness of the Two-Phase Stefan problem, which is a model for the interaction of two phases of a fluid, like ice and water, and the evolution of the interface that separates the two.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+I am interested in anything related to mathematics, from numerical simulations of differential equations, to optimization, and lately Data Science. Any problem that can be modeled into a mathematical question, and that requires deep thinking and the development of new mathematical tools sparks my interest.
 
-### Markdown
+## Quick bio
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Ph.D. Mathematics (2016) University of California Davis. Advisor: Steve Shkoller. Thesis: Local and Global well-posedness of the Two-phase Stefan problem.
 
-```markdown
-Syntax highlighted code block
+BS Physics (2008) Physics department, U. Chile.
 
-# Header 1
-## Header 2
-### Header 3
+BS Mathematics (2008) Mathematics department, U. Chile.
 
-- Bulleted
-- List
+Mathematical Civil Engineering (2009) Mathematics department, U. Chile. Advisor: Juan Diego Davila. Undergraduate Thesis: Singular Limits in Liouville type equations with exponential Neumann data.
 
-1. Numbered
-2. List
+### Publications
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/aramisentreri/aramisentreri.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+- M. Hadzic, G. Navarro, S. Shkoller, Local well-posedness and Global stability of the Two-phase Stefan problem. (Submitted). (Arxiv) [Link](https://arxiv.org/abs/1607.00681) 
+- R. Granero-Belinchon, G. Navarro, A. Ortega, On the effect of boundaries in the two-phase porous flow. Nonlinearity 28 (2015) 435-461.
