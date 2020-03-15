@@ -4,6 +4,14 @@ I am a repurposed math PhD, working in Algorithms and software leadership in the
 
 I am interested in anything related to mathematics, from numerical simulations of differential equations, to optimization, and lately Data Science. Any problem that can be modeled into a mathematical question, and that requires deep thinking and the development of new mathematical tools sparks my interest.
 
+## My projects
+_These are all half-baked ideas that get worked on whenever I have time_
+
+- Bazaar of Dragons - _a marketplace for table top miniatures_
+- Diamond Matching - _a model for estimating the right prize of diamonds_
+- Singular limits in Liouville-type equations - _an extension to my undergraduate thesis_
+- Hollow stars - _what happens inside a non-equilibrium star?_
+
 ## Quick bio
 
 Ph.D. Mathematics (2016) University of California Davis. Advisor: Steve Shkoller. Thesis: Local and Global well-posedness of the Two-phase Stefan problem.
