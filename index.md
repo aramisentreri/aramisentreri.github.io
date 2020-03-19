@@ -13,14 +13,6 @@ _These are all half-baked ideas that get worked on whenever I have time_
 - Hollow stars - _what happens inside a non-equilibrium star?_
 
 ## Quick bio
-[test](./latex.html)
-$$
-M = \left( \begin{array}{ccc}
-x_{11} & x_{12} & \ldots \\
-x_{21} & x_{22} & \ldots \\
-\vdots & \vdots & \ldots \\
-\end{array} \right)
-$$
 
 Ph.D. Mathematics (2016) University of California Davis. Advisor: Steve Shkoller. Thesis: Local and Global well-posedness of the Two-phase Stefan problem.
 

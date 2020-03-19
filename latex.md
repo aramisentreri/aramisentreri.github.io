@@ -5,8 +5,7 @@
 Welcome to Markdeep. It's the simple way to write plain text with
 _style_. From https://casual-effects.com/markdeep
 
-Section
-===============================================================================
+## Section
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -27,8 +26,7 @@ pariatur.
 	w=0\,.
 \end{equation}
 
-Subsection
--------------------------------------------------------------------------------
+## Subsection
 
 Excepteur sint occaecat cupidatat non proident, sunt in
 culpa qui officia deserunt mollit anim id est laborum.
@@ -53,5 +51,5 @@ culpa qui officia deserunt mollit anim id est laborum.
 
 
 
-<link rel="stylesheet" href="https://casual-effects.com/markdeep/latest/latex.css?">
+<!--<link rel="stylesheet" href="https://casual-effects.com/markdeep/latest/latex.css?">-->
 <!-- Markdeep: --><style class="fallback">body{visibility:hidden}</style><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js?" charset="utf-8"></script>
