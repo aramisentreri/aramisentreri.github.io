@@ -14,6 +14,14 @@ _These are all half-baked ideas that get worked on whenever I have time_
 
 ## Quick bio
 
+$$
+M = \left( \begin{array}{ccc}
+x_{11} & x_{12} & \ldots \\
+x_{21} & x_{22} & \ldots \\
+\vdots & \vdots & \ldots \\
+\end{array} \right)
+$$
+
 Ph.D. Mathematics (2016) University of California Davis. Advisor: Steve Shkoller. Thesis: Local and Global well-posedness of the Two-phase Stefan problem.
 
 BS Physics (2008) Physics department, U. Chile.
