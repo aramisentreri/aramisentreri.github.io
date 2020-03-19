@@ -13,7 +13,7 @@ _These are all half-baked ideas that get worked on whenever I have time_
 - Hollow stars - _what happens inside a non-equilibrium star?_
 
 ## Quick bio
-[test](https://github.com/aramisentreri/aramisentreri.github.io/blob/master/latex.md)
+[test](./latex.html)
 $$
 M = \left( \begin{array}{ccc}
 x_{11} & x_{12} & \ldots \\
