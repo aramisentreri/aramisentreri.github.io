@@ -38,3 +38,31 @@ Having trouble with Pages? Check out our [documentation](https://help.github.com
 
 ## There is a tutorial to include Latex syntax to Github pages that I want to follow:
 [Adding MathJax to a GitHub Pages Jekyll](http://sgeos.github.io/github/jekyll/2016/08/21/adding_mathjax_to_a_jekyll_github_pages_blog.html)
+
+## Steps to get mathjax working
+1. Download the theme template (in my case [minimal](https://github.com/pages-themes/minimal)) from the folder '_layouts/default.html',_ and include it in your own site repository under "_layouts/default.html"_ 
+2. Edit that file to include in the head portion the following scrips:
+```html
+<head>
+  ...
+  
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+    </script>
+    <script type="text/javascript" charset="utf-8" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <script type="text/javascript" charset="utf-8" src="https://vincenttam.github.io/javascripts/MathJaxLocal.js">
+    </script>
+</head>
+```
+3. Then on the markdown file you want to add math formulas, simply write them between $$: 
+```
+## Example using simple mathjax
+
+$$ r = h = \sqrt{\frac {1} {2}} = \sqrt{\frac {N} {N+1}} \sqrt{\frac {N+1} {2N}} $$
+```
