@@ -10,5 +10,3 @@ google_analytics:
 #kramdown:
 #  math_engine: mathjax
 
-layout: post
-mathjax: true
