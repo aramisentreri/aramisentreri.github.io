@@ -19,7 +19,7 @@ _These are all half-baked ideas that get worked on whenever I have time_
 
 - [slate](./slate.md)
 - [latex](./latex.md)
-
+- [mathjax](./mathjax.md)
 ## Quick bio
 
 Ph.D. Mathematics (2016) University of California Davis. Advisor: Steve Shkoller. Thesis: Local and Global well-posedness of the Two-phase Stefan problem.
