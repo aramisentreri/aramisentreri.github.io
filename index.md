@@ -12,6 +12,9 @@ _These are all half-baked ideas that get worked on whenever I have time_
 - Singular limits in Liouville-type equations - _an extension to my undergraduate thesis_
 - Hollow stars - _what happens inside a non-equilibrium star?_
 
+- [slate](./slate.md)
+- [latex](./latex.md)
+
 ## Quick bio
 
 Ph.D. Mathematics (2016) University of California Davis. Advisor: Steve Shkoller. Thesis: Local and Global well-posedness of the Two-phase Stefan problem.
