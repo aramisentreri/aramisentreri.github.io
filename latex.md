@@ -1,6 +1,3 @@
-              <meta charset="utf-8" emacsmode="-*- markdown -*-">
-
-                            **LaTeX-style Starter Document**
 
 Welcome to Markdeep. It's the simple way to write plain text with
 _style_. From https://casual-effects.com/markdeep
@@ -51,5 +48,4 @@ culpa qui officia deserunt mollit anim id est laborum.
 
 
 
-<!--<link rel="stylesheet" href="https://casual-effects.com/markdeep/latest/latex.css?">-->
 <!-- Markdeep: --><style class="fallback">body{visibility:hidden}</style><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js?" charset="utf-8"></script>
