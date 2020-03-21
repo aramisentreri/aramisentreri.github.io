@@ -1,4 +1,4 @@
 # Blog
 
 ## Posts
-- [First post](./post_1.md)
+- [Feynman's proof of the Maxwell equations](./post_1.md)
