@@ -1,8 +1,3 @@
-{% include mathjax.html %}
-
-
-$$ \sum\limits_{n=0} dsadsa$$
-
 ## Welcome to my page
 
 I am a repurposed math PhD, working in Algorithms and software leadership in the Bay Area. In the past I worked mainly in problems related to Fluid dynamics and Free boundary problems. My thesis was on the local and global well-posedness of the Two-Phase Stefan problem, which is a model for the interaction of two phases of a fluid, like ice and water, and the evolution of the interface that separates the two.
