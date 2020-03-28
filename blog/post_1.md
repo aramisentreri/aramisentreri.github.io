@@ -11,17 +11,18 @@ For a math-physics enthusiast, this is a hardcore click-bait title. So I dived i
 The algebra is simple enough, and one might think to understand it right away. Classic Feynman argumentation. The reality is that, after a little bit of probing ones own understanding, one realizes that nothing is really clear!
 
 Take for example the first argument line:
-Assume a particle exists with position $x_j (j=1,2,3)$ and velocity $\dot{x}_j$ satisfying Newton's equation
+Assume a particle exists with position $x_j\ (j=1,2,3)$ and velocity $\dot{x}_j$ satisfying Newton's equation
 
 $$m\ddot{x}_j = F_j(x,\dot{x},t)$$
 
 with commutation relations
 
 $$[x_j, x_k] = 0,$$
+
 $$[x_j, \dot{x}_k] = i\hbar \delta_{jk}.$$
 
-Sure you might say, seems reasonable... Really though?
-What is the commutator of $x_j$ and $x_k$? What is $x_jx_k - x_kx_j$? Is that multiplication?
+"Sure" you might say, "seems reasonable"... Really though?
+What is the commutator of $x_j$ and $x_k$? **What is** $x_jx_k - x_kx_j$? Is that multiplication?
 
 What is $x_j$ itself? Is it really just a scalar function of time that gives you the position of the particle? What about $\dot{x}_k$?
 
