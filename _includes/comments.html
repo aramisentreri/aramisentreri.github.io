@@ -13,7 +13,7 @@ request.onload = function() {
 		}
 
 		if ( 0 === response.length ) {
-			document.getElementById( 'no-comments-found' ).style.display = 'block';
+			document.getElementById( 'no-comments-found' ).style.display = 'none';
 		}
 	} else {
 		console.error( this );
@@ -60,7 +60,8 @@ request.send();
 
 <div class="github-comments">
 	<h2>Comments</h2>
+	<p id="leave-a-comment">Join the discussion for this article by clicking <a href="https://github.com/aramisentreri/aramisentreri.github.io/issues/{{ page.comments_id }}">Here</a>. Comments appear on this page instantly.</p>
 	<ul id="gh-comments-list"></ul>
 	<p id="no-comments-found">No comments found for this article.</p>
-	<p id="leave-a-comment">Join the discussion for this article on <a href="https://github.com/aramisentreri/aramisentreri.github.io/issues/{{ page.comments_id }}">this ticket</a>. Comments appear on this page instantly.</p>
+
 </div>
