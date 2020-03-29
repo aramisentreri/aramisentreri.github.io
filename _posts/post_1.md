@@ -1,3 +1,8 @@
+---
+layout: post
+title: Feynman's proof of the Maxwell equations
+tags: [Physics]
+---
 # Feynman's proof of the Maxwell equations
 
 A few weeks ago, [Freeman Dyson](https://en.wikipedia.org/wiki/Freeman_Dyson), a renowned professor from the Institute for Advanced Study in Princeton, passed away. He was a very curious physicist, with many interests and wild thought experiments (see Dyson sphere). He was also a student of Feynman, and in October 1948, Feynman showed him a proof of Maxwell equations, assuming only Newton's law of motion and the commutation relation between position and velocity for a single nonrelativistic particle.
