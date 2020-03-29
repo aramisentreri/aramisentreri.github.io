@@ -11,7 +11,7 @@ _These are all half-baked ideas that get worked on whenever I have time_
 - Diamond Matching - _a model for estimating the right prize of diamonds_
 - Singular limits in Liouville-type equations - _an extension to my undergraduate thesis_
 - Hollow stars - _what happens inside a non-equilibrium star?_
-- [My blog](./blog/blog.md) - Where I write about whatever with a random frequency
+- [My blog](./blog.md) - Where I write about whatever with a random frequency
 
 ## Quick bio
 
