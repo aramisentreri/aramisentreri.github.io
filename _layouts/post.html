@@ -65,17 +65,17 @@
 
       {{ content }}
 
-
+      {% if page.comments_id %}
+			   {% include comments.html %}
+	    {% endif %}
       <!-- Trying to include staticman's comments in to the posts -->
-
-          {% if site.comments %}
+      <!--    {% if site.comments %}
             <div class="staticman-comments">
               {% include staticman-comments.html %}
             </div>
-          {% endif %}
-
+          {% endif %}-->
       <!-- End of comments -->
-      
+
       </section>
 
       <footer>
