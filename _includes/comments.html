@@ -28,6 +28,8 @@ function createCommentEl( response ) {
 	let userAvatar = document.createElement( 'img' );
 	userAvatar.classList.add( 'avatar' );
 	userAvatar.setAttribute( 'src', response.user.avatar_url );
+	userAvatar.setAttribute( 'height', '40' );
+	userAvatar.setAttribute( 'width', '40' );
 
 	user.appendChild( userAvatar );
 
