@@ -68,13 +68,6 @@
       {% if page.comments_id %}
 			   {% include comments.html %}
 	    {% endif %}
-      <!-- Trying to include staticman's comments in to the posts -->
-      <!--    {% if site.comments %}
-            <div class="staticman-comments">
-              {% include staticman-comments.html %}
-            </div>
-          {% endif %}-->
-      <!-- End of comments -->
 
       </section>
 
@@ -82,7 +75,7 @@
         {% if site.github.is_project_page %}
         <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
         {% endif %}
-        <p><small>Hosted on GitHub Pages &mdash; Theme by Gustavo <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a>, with little tweaks by Gustavo</small></p>
       </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>

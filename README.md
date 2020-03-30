@@ -40,12 +40,12 @@ Having trouble with Pages? Check out our [documentation](https://help.github.com
 [Adding MathJax to a GitHub Pages Jekyll](http://sgeos.github.io/github/jekyll/2016/08/21/adding_mathjax_to_a_jekyll_github_pages_blog.html)
 
 ## Steps to get mathjax working
-1. Download the theme template (in my case [minimal](https://github.com/pages-themes/minimal)) from the folder '_layouts/default.html',_ and include it in your own site repository under "_layouts/default.html"_ 
+1. Download the theme template (in my case [minimal](https://github.com/pages-themes/minimal)) from the folder '_layouts/default.html',_ and include it in your own site repository under "_layouts/default.html"_
 2. Edit that file to include in the head portion the following scrips:
 ```html
 <head>
   ...
-  
+
   <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
@@ -60,9 +60,12 @@ Having trouble with Pages? Check out our [documentation](https://help.github.com
     </script>
 </head>
 ```
-3. Then on the markdown file you want to add math formulas, simply write them between $$: 
+3. Then on the markdown file you want to add math formulas, simply write them between $$:
 ```
 ## Example using simple mathjax
 
 $$ r = h = \sqrt{\frac {1} {2}} = \sqrt{\frac {N} {N+1}} \sqrt{\frac {N+1} {2N}} $$
 ```
+
+## Steps to add comments to blog posts using Github Issues API
+1. See the tutorial from [Aristath's github page](https://aristath.github.io/blog/static-site-comments-using-github-issues-api)
