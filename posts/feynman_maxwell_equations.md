@@ -23,11 +23,11 @@ $$ m\ddot{x} = F(x,\dot{x},t)\label{eq:newton} $$
 
 with commutation relations $[x, x] = 0,$ $m[x, \dot{x}] = i\hbar$.
 
-"Sure" you might say, "seems reasonable" since we have all seen these commutation relations before... Really though? What **is** the commutator of $x$ and $\dot{x}$? **What** is $x\dot{x}$? Is that multiplication?
+"Sure" you might say, "seems reasonable" since we have all seen these commutation relations before... Really though? What is the commutator of $x$ and $\dot{x}$? What is the product $x\dot{x}$? Is that multiplication?
 
 What is $x(t)$ itself? Is it really just a scalar function of time that gives you the position of the particle? What about $\dot{x}(t)$?
 
-I hope you see where I'm going here. If they are truly scalars, then both of the above commutation relations would be zero, because multiplication is commutative. But no, something is not being stated... They can't possible be scalars, and so what is the meaning of equation $\eqref{eq:newton}$?
+I hope you see where I'm going here. If they are truly scalars, then both of the above commutation relations would be zero, because multiplication is commutative. But no, something is not being stated... They can't possible be scalars, and so what is the meaning of equation $\ref{eq:newton}$?
 
 Let's try to figure it out.
 
