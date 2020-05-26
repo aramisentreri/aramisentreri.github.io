@@ -43,7 +43,7 @@ We recognized above that $x$ and $p$ cannot be scalars in the typical sense, oth
 
 ### Operators  
 
-In Quantum Mechanics, the state of a system is described by a wave function $\psi(t)$, or sometimes written down as a ket: $\psi(t)$. Don't be frightened, they are the same thing. Writing it like this just helps with some algebra.
+In Quantum Mechanics, the state of a system is described by a wave function $\psi(t)$, or sometimes written down as a ket: $|\psi(t)>$. Don't be frightened, they are the same thing. Writing it like this just helps with some algebra.
 
 When we try to observe some physical quantity $\mathcal{A}$ of the system, like its position or momentum, there exists an associated linear operator to that quantity $\hat{\mathcal{A}}$. The eigenvalues of $\hat{\mathcal{A}}$ correspond to the possible values that the physical quantity can take.  
 
