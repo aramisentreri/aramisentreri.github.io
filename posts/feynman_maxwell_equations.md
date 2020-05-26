@@ -43,54 +43,56 @@ We recognized above that $x$ and $p$ cannot be scalars in the typical sense, oth
 
 ### Operators  
 
-In Quantum Mechanics, the state of a system is described by a wave function $\psi(t)$, or sometimes written down as a ket: $|\psi(t)>$. Don't be frightened, they are the same thing. Writing it like this just helps with some algebra.
+In Quantum Mechanics, the state of a system is described by a wave function $\psi(t)$.
 
 When we try to observe some physical quantity $\mathcal{A}$ of the system, like its position or momentum, there exists an associated linear operator to that quantity $\hat{\mathcal{A}}$. The eigenvalues of $\hat{\mathcal{A}}$ correspond to the possible values that the physical quantity can take.  
 
 In the case of $\bf x(t)$, the paper is ambiguous as to which are we referring to, the physical quantity, or the operator that acts on a wave function $\psi$. Mathematically, it requires a little bit of formalism to understand how it works when applied to an arbitrary state $\psi$, but intuitively it suffices to say that the operator $\bf x(t)$ measures the position of the particle at time $t$.
 
 So, if $\psi(x)$ is the wave function when the particle is in position "$x$", then
-$$
-\hat{\bf x} \psi(x) = x\psi(x) \nonumber
-$$
+\begin{equation*}
+\hat{\bf x} \psi(x) = x\psi(x)
+\end{equation*}
 where on the right side, the "$x$" is now a scalar multiplying the function $\psi(x)$. Operator on the left, scalar on the right.
 
 What is $\bf p$ then?
+
 $\bf{p}$ is the operator that represents a measurement of the momentum of a particle, but unlike $\bf x$, the associated operator analogue $\hat{\bf p}$ is easier to understand without heavy formalism. Yay!
 
 Given the wave like nature of the Schroedinger equation, it is an illustrative example to think of a plane wave to understand $p$. For a plane wave (representing perhaps a photon of a given frequency $\omega$), the wave function takes a simple form,
-$$
-\psi(t,x) = e^{i({k x} - \omega t)}\nonumber
-$$
+\begin{equation*}
+\psi(t,x) = e^{i({k x} - \omega t)}
+\end{equation*}
 with the photon's momentum given by $p = k\hbar$. Notice that for this example, it is easy to see that in order to recover the momentum of the plane wave, it's enough to take the derivative and multiply by $\frac{\hbar}{i}$:
-$$
-\frac{\hbar}{i}\frac{\partial}{\partial x}\psi = \frac{\hbar}{i}ik e^{i({kx} - \omega t)} = k\hbar\ e^{i({k x} - \omega t)}= p\ \psi(t,x) \nonumber
-$$
+\begin{equation*}
+\frac{\hbar}{i}\frac{\partial}{\partial x}\psi = \frac{\hbar}{i}ik e^{i({kx} - \omega t)} = k\hbar\ e^{i({k x} - \omega t)}= p\ \psi(t,x)
+\end{equation*}
 
 So as a first intuition, one might consider the momentum operator acting on a wave function $\psi$ as
-$$
+\begin{equation}
 \hat{\bf p}\ \psi = \frac{\hbar}{i}\frac{\partial}{\partial x} \psi \label{eq:momentum}
-$$
+\end{equation}
 
 For now, we will assume the form $\eqref{eq:momentum}$ for all wave functions, but you can see the notes at the end of the article for more details on a general case (instead of just a plane wave).
 
 ### The proper proof of the commutation relation
 
 So now we have a proper description of both operators $\hat{\bf x}$ and $\hat{\bf p}$, and we can identify the commutator applied to a wave function $\psi$:
-$$
+\begin{equation*}
 \left[\hat{x},\hat{p}\right]\psi = \hat{x}\hat{p}\psi - \hat{p}\hat{x}\psi \\
 = x\frac{\hbar}{i}\frac{\partial}{\partial x}\psi - \frac{\hbar}{i}\frac{\partial}{\partial x} (x\psi)\\
 = \frac{\hbar}{i}\left( x\frac{\partial \psi}{\partial x} - \psi - x\frac{\partial \psi}{\partial x}\right)\\
-= -\frac{\hbar}{i}\psi \nonumber
-$$
+= -\frac{\hbar}{i}\psi
+\end{equation*}
 where we used in the third line the derivative of the product rule, and that the derivative of $x$ is 1. So we can write that, as operators, $\hat{\bf x}$ and $\hat{\bf p}$ do not commute, and instead,
-$$
-[\hat{\bf x}, \hat{\bf p}] = - \frac{\hbar}{i} = i\hbar\nonumber
-$$
+\begin{equation*}
+[\hat{\bf x}, \hat{\bf p}] = - \frac{\hbar}{i} = i\hbar
+\end{equation*}
+
 
 ## The evolution of a time dependent operator
 
-Remember above when I delegated the responsibility of explaining why $m\dot{x} = p$ to _future Gustavo_? Well, the future is here. sigh. **Time to clarify what is the relationship between $p$ and $\dot{x}$ as operators.**
+Remember above when I delegated the responsibility of explaining why $m\dot{x} = p$ to _future Gustavo_? Well, the future is here. sigh. Time to clarify what is the relationship between $p$ and $\dot{x}$ as operators.
 
 We'll start with $\dot{x}$ -- Typically, the dot signifies a time derivative. A time derivative of the position operator?But time derivatives are for functions that change in time.... soooo... how?
 
