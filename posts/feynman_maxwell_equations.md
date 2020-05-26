@@ -136,10 +136,10 @@ For example, to sample $\hat{x}(t+\epsilon)$, first evolve the state of the init
 |\psi(t+\epsilon)> = U(t+\epsilon,t_0) |\psi(t_0)>.
 \end{equation}
 
-Now we can apply the position operator $\bf \hat{x}$ to this state to get the position at time $t+\epsilon$, and then revert back to the time independent state \[|\psi(t_0)>\] by applying the inverse $U^\dagger(t+\epsilon,t_0)$:
+Now we can apply the position operator $\bf \hat{x}$ to this state to get the position at time $t+\epsilon$, and then revert back to the time independent state \\[|\psi(t_0)>\\] by applying the inverse $U^\dagger(t+\epsilon,t_0)$:
 
 \begin{equation}
-U^\dagger(t+\epsilon, t_0)\ {\bf \hat{x}}\ U(t+\epsilon, t_0) |\psi(t_0)>\nonumber
+U^\dagger(t+\epsilon, t_0)\ {\bf \hat{x}}\ U(t+\epsilon, t_0) |\psi(t_0)>
 \end{equation}
 
 
@@ -152,8 +152,7 @@ U^\dagger(t,t_0)\ {\bf \hat{x}} \ U(t, t_0) |\psi(t_0)>.
 Putting things together we obtain that the derivative of $x$ is
 
 \begin{equation}
-\lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t))|\psi>\\\\
-= \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} \left(U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)\right)|\psi(t_0)>
+\lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t))|\psi> = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} \left(U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)\right)|\psi(t_0)>
 \end{equation}
 
 
@@ -178,7 +177,7 @@ So we recognize the following identity for the evolution of the operator $\hat{x
 
 The evolution of an unobserved quantum system is described by the Hamiltonian, so we must find a relationship between $U(t,t_0)$ and $H(t)$. Lets provide the intuition.
 
-Since the eigenvectors of $H$ form a basis for the function space of possible wave functions $\psi(t)$, we can determine $U(t,t_0)$ by computing its effects on each eigenvector. If for example \[|u_E(t_0)>\] is the eigenvector associated with the eigenvalue $E$, then,
+Since the eigenvectors of $H$ form a basis for the function space of possible wave functions $\psi(t)$, we can determine $U(t,t_0)$ by computing its effects on each eigenvector. If for example \\[|u_E(t_0)>\\] is the eigenvector associated with the eigenvalue $E$, then,
 
 \begin{equation}
 \hat{H}\ |u_E(t_0)>\ =  E\ |u_E(t_0)>
@@ -201,7 +200,7 @@ where the last equality follows from $E= \hbar\omega$. Looking at that equation,
 U(t,t_0) = e^{-i\frac{E}{\hbar}(t,t_0)}\nonumber
 \end{equation}
 
-since then, \[|u_E(t)> = U(t,t_0) |u_E(t_0)>\] . Equivalently, one might define more generally $U(t,t_0)$ by looking at the Schroedinger equation re-written in terms of $U$:
+since then, \\[|u_E(t)> = U(t,t_0) |u_E(t_0)>\\] . Equivalently, one might define more generally $U(t,t_0)$ by looking at the Schroedinger equation re-written in terms of $U$:
 
 \begin{equation}
 i\hbar\frac{d}{dt} \psi(t) = H\ \psi(t)\\\\
@@ -219,6 +218,7 @@ which is an equality of operators.
 #### Putting things together
 
 Going back to $\eqref{ref1}$, and replacing this equality $\eqref{eq:evol_u}$, we obtain that
+
 \begin{equation}
 \frac{d}{dt}\hat{x}(t) = - \frac{1}{i\hbar}U^\dagger(t,t_0) H^\dagger \hat{x}\ U(t,t_0) + U^\dagger(t,t_0)\ \hat{x}\ \frac{1}{i\hbar}H\ U(t,t_0) \\\\
 = \frac{1}{i\hbar}(-U^\dagger H {\color{red} U\ U^\dagger} \hat{x}\ U + U^\dagger\ \hat{x}\ {\color{red} U\ U^\dagger} H\ U) \\\\
