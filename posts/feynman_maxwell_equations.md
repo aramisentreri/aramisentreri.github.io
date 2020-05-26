@@ -19,7 +19,9 @@ The algebra is simple enough, and one might think to understand it right away. C
 
 Take for example the first argument line in 1D: Assume a particle exists with position $x$ and velocity $\dot{x}$ satisfying Newton's equation
 
-$$ m\ddot{x} = F(x,\dot{x},t)\label{eq:newton} $$
+\begin{equation}
+m\ddot{x} = F(x,\dot{x},t)\label{eq:newton}
+\end{equation}
 
 with commutation relations $[x, x] = 0,$ $m[x, \dot{x}] = i\hbar$.
 
