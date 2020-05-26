@@ -79,9 +79,9 @@ For now, we will assume the form $\eqref{eq:momentum}$ for all wave functions, b
 
 So now we have a proper description of both operators $\hat{\bf x}$ and $\hat{\bf p}$, and we can identify the commutator applied to a wave function $\psi$:
 \begin{equation}
-\left[\hat{x},\hat{p}\right]\psi = \hat{x}\hat{p}\psi - \hat{p}\hat{x}\psi \\
-= x\frac{\hbar}{i}\frac{\partial}{\partial x}\psi - \frac{\hbar}{i}\frac{\partial}{\partial x} (x\psi)\\
-= \frac{\hbar}{i}\left( x\frac{\partial \psi}{\partial x} - \psi - x\frac{\partial \psi}{\partial x}\right)\\
+\left[\hat{x},\hat{p}\right]\psi = \hat{x}\hat{p}\psi - \hat{p}\hat{x}\psi \\\\
+= x\frac{\hbar}{i}\frac{\partial}{\partial x}\psi - \frac{\hbar}{i}\frac{\partial}{\partial x} (x\psi)\\\\
+= \frac{\hbar}{i}\left( x\frac{\partial \psi}{\partial x} - \psi - x\frac{\partial \psi}{\partial x}\right)\\\\
 = -\frac{\hbar}{i}\psi
 \end{equation}
 where we used in the third line the derivative of the product rule, and that the derivative of $x$ is 1. So we can write that, as operators, $\hat{\bf x}$ and $\hat{\bf p}$ do not commute, and instead,
@@ -133,10 +133,10 @@ Intuitively, applying the operator $U^\dagger(t,t_0)$ is like taking a quantum s
 
 For example, to sample $\hat{x}(t+\epsilon)$, first evolve the state of the initial quantum system to the time $t+\epsilon$, by applying $U(t+\epsilon,t_0)$:
 \begin{equation}
-|\psi(t+\epsilon)> = U(t+\epsilon,t_0) |\psi(t_0)>.\nonumber
+|\psi(t+\epsilon)> = U(t+\epsilon,t_0) |\psi(t_0)>.
 \end{equation}
 
-Now we can apply the position operator $\bf \hat{x}$ to this state to get the position at time $t+\epsilon$, and then revert back to the time independent state $|\psi(t_0)>$ by applying the inverse $U^\dagger(t+\epsilon,t_0)$:
+Now we can apply the position operator $\bf \hat{x}$ to this state to get the position at time $t+\epsilon$, and then revert back to the time independent state \[|\psi(t_0)>\] by applying the inverse $U^\dagger(t+\epsilon,t_0)$:
 
 \begin{equation}
 U^\dagger(t+\epsilon, t_0)\ {\bf \hat{x}}\ U(t+\epsilon, t_0) |\psi(t_0)>\nonumber
@@ -145,24 +145,25 @@ U^\dagger(t+\epsilon, t_0)\ {\bf \hat{x}}\ U(t+\epsilon, t_0) |\psi(t_0)>\nonumb
 
 The result of this operation would be a scalar for the position $x(t+\epsilon)$ for the collapsed wave function at that position. Equivalently, to get the position at time $t$, all we have to do is compute:
 \begin{equation}
-U^\dagger(t,t_0)\ {\bf \hat{x}} \ U(t, t_0) |\psi(t_0)>.\nonumber
+U^\dagger(t,t_0)\ {\bf \hat{x}} \ U(t, t_0) |\psi(t_0)>.
 \end{equation}
 
 
 Putting things together we obtain that the derivative of $x$ is
 
 \begin{equation}
-\lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t))|\psi> = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} \left(U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)\right)|\psi(t_0)> \nonumber
+\lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t))|\psi>\\\\
+= \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} \left(U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)\right)|\psi(t_0)>
 \end{equation}
 
 
 Let's use the classic trick of adding and subtracting an intermediary term: $U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)$,
 
 \begin{equation}
-\lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t)) = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} [U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) {\color{red}- U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)}\\
-{\color{red}+ U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)} - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)]\\
-= \lim\limits_{\epsilon\rightarrow 0}(\frac{U^\dagger(t+\epsilon,t_0) - U^\dagger(t,t_0)}{\epsilon})\ \hat{x}\ U(t+\epsilon,t_0)\\
-+ \lim\limits_{\epsilon\rightarrow 0}U^\dagger(t,t_0)\ \hat{x}\ (\frac{U(t+\epsilon,t_0) - U(t,t_0)}{\epsilon}) \nonumber
+\lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t)) = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} [U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) {\color{red}- U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)}\\\\
+{\color{red}+ U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)} - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)]\\\\
+= \lim\limits_{\epsilon\rightarrow 0}(\frac{U^\dagger(t+\epsilon,t_0) - U^\dagger(t,t_0)}{\epsilon})\ \hat{x}\ U(t+\epsilon,t_0)\\\\
++ \lim\limits_{\epsilon\rightarrow 0}U^\dagger(t,t_0)\ \hat{x}\ (\frac{U(t+\epsilon,t_0) - U(t,t_0)}{\epsilon})
 \end{equation}
 
 So we recognize the following identity for the evolution of the operator $\hat{x}$:
@@ -177,7 +178,7 @@ So we recognize the following identity for the evolution of the operator $\hat{x
 
 The evolution of an unobserved quantum system is described by the Hamiltonian, so we must find a relationship between $U(t,t_0)$ and $H(t)$. Lets provide the intuition.
 
-Since the eigenvectors of $H$ form a basis for the function space of possible wave functions $\psi(t)$, we can determine $U(t,t_0)$ by computing its effects on each eigenvector. If for example $|u_E(t_0)>$ is the eigenvector associated with the eigenvalue $E$, then,
+Since the eigenvectors of $H$ form a basis for the function space of possible wave functions $\psi(t)$, we can determine $U(t,t_0)$ by computing its effects on each eigenvector. If for example \[|u_E(t_0)>\] is the eigenvector associated with the eigenvalue $E$, then,
 
 \begin{equation}
 \hat{H}\ |u_E(t_0)>\ =  E\ |u_E(t_0)>
@@ -185,7 +186,7 @@ Since the eigenvectors of $H$ form a basis for the function space of possible wa
 
 Therefore, since the evolution of a system is given by Schroedinger equation, i.e.  
 \begin{equation}
-i\hbar\frac{d}{dt} u_E(t) = \hat{H}\ u_E(t) = E\ u_E(t) \nonumber
+i\hbar\frac{d}{dt} u_E(t) = \hat{H}\ u_E(t) = E\ u_E(t)
 \end{equation}
 
 we obtain that $u_E$​ satisfies a simple 1D differential equation. Then
@@ -200,12 +201,12 @@ where the last equality follows from $E= \hbar\omega$. Looking at that equation,
 U(t,t_0) = e^{-i\frac{E}{\hbar}(t,t_0)}\nonumber
 \end{equation}
 
-since then, $|u_E(t)> = U(t,t_0) |u_E(t_0)>$ . Equivalently, one might define more generally $U(t,t_0)$ by looking at the Schroedinger equation re-written in terms of $U$:
+since then, \[|u_E(t)> = U(t,t_0) |u_E(t_0)>\] . Equivalently, one might define more generally $U(t,t_0)$ by looking at the Schroedinger equation re-written in terms of $U$:
 
 \begin{equation}
-i\hbar\frac{d}{dt} \psi(t) = H\ \psi(t)\\
-i\hbar \frac{d}{dt} U(t,t_0)\psi(t_0) = H\ U(t,t_0) \psi(t_0)\\
-\Rightarrow \left[i\hbar \frac{d}{dt}U(t,t_0) - H\ U(t,t_0)\right]\psi(t_0) = 0 \nonumber
+i\hbar\frac{d}{dt} \psi(t) = H\ \psi(t)\\\\
+i\hbar \frac{d}{dt} U(t,t_0)\psi(t_0) = H\ U(t,t_0) \psi(t_0)\\\\
+\Rightarrow \left[i\hbar \frac{d}{dt}U(t,t_0) - H\ U(t,t_0)\right]\psi(t_0) = 0
 \end{equation}
 
 Where in the last line we recognize the functional equation:
@@ -219,11 +220,11 @@ which is an equality of operators.
 
 Going back to $\eqref{ref1}$, and replacing this equality $\eqref{eq:evol_u}$, we obtain that
 \begin{equation}
-\frac{d}{dt}\hat{x}(t) = - \frac{1}{i\hbar}U^\dagger(t,t_0) H^\dagger \hat{x}\ U(t,t_0) + U^\dagger(t,t_0)\ \hat{x}\ \frac{1}{i\hbar}H\ U(t,t_0) \\
-= \frac{1}{i\hbar}(-U^\dagger H {\color{red} U\ U^\dagger} \hat{x}\ U + U^\dagger\ \hat{x}\ {\color{red} U\ U^\dagger} H\ U) \\
+\frac{d}{dt}\hat{x}(t) = - \frac{1}{i\hbar}U^\dagger(t,t_0) H^\dagger \hat{x}\ U(t,t_0) + U^\dagger(t,t_0)\ \hat{x}\ \frac{1}{i\hbar}H\ U(t,t_0) \\\\
+= \frac{1}{i\hbar}(-U^\dagger H {\color{red} U\ U^\dagger} \hat{x}\ U + U^\dagger\ \hat{x}\ {\color{red} U\ U^\dagger} H\ U) \\\\
 = \frac{1}{i\hbar}[U^\dagger \hat{x} U, U^\dagger H U]\\
-= \frac{1}{i\hbar}[x(t), H(t)]\\
-= \frac{\partial H}{\partial p_x} \nonumber
+= \frac{1}{i\hbar}[x(t), H(t)]\\\\
+= \frac{\partial H}{\partial p_x}
 \end{equation}
 
 
@@ -231,12 +232,12 @@ Where we used that $H$ is Hermitian ( $H^\dagger = H$ ), a "multiplying by the i
 
 Finally, to take the derivative of $H$ with respect to $p$, we will use the Hamiltonian for a particle under a potential $V(x)$,
 \begin{equation}
-H = \frac{\hat{p}^2}{2m} + \hat{V}(x)\nonumber
+H = \frac{\hat{p}^2}{2m} + \hat{V}(x)
 \end{equation}
 
 Then
 \begin{equation}
-\frac{d\hat{x}}{dt} = \frac{\hat{p}_x}{m}\nonumber
+\frac{d\hat{x}}{dt} = \frac{\hat{p}_x}{m}
 \end{equation}
 
 
@@ -288,7 +289,10 @@ Any wave function can be written as a sum of plane waves (since these are a basi
 
 where $\Phi(p)$ is the Fourier transform of $\psi$, so in the general case it is also true that the momentum operator acts like a derivative:
 \begin{equation}
-\frac{\hbar}{i}\frac{\partial}{\partial x}\psi = \frac{\hbar}{i}\frac{\partial}{\partial x}\left[\frac{1}{(2\pi\hbar)^{\frac{1}{2}}} \int\limits_{\mathbb{R}} \Phi(p) e^{ik\cdot x} dp\right]\\= \frac{\hbar}{i}\frac{1}{(2\pi\hbar)^{\frac{1}{2}}} \int\limits_{\mathbb{R}} \Phi(p) \frac{\partial}{\partial x} e^{ik\cdot x} dp \\= \frac{ik\hbar}{i}\left[\frac{1}{(2\pi\hbar)^{\frac{1}{2}}} \int\limits_{\mathbb{R}} \Phi(p) e^{ik\cdot x} dp\right]\\= k\hbar\ \psi\\= p\ \psi \nonumber
+\frac{\hbar}{i}\frac{\partial}{\partial x}\psi = \frac{\hbar}{i}\frac{\partial}{\partial x}\left[\frac{1}{(2\pi\hbar)^{\frac{1}{2}}} \int\limits_{\mathbb{R}} \Phi(p) e^{ik\cdot x} dp\right]\\\\
+= \frac{\hbar}{i}\frac{1}{(2\pi\hbar)^{\frac{1}{2}}} \int\limits_{\mathbb{R}} \Phi(p) \frac{\partial}{\partial x} e^{ik\cdot x} dp \\\\
+= \frac{ik\hbar}{i}\left[\frac{1}{(2\pi\hbar)^{\frac{1}{2}}} \int\limits_{\mathbb{R}} \Phi(p) e^{ik\cdot x} dp\right]\\= k\hbar\ \psi\\\\
+= p\ \psi
 \end{equation}
 
 
