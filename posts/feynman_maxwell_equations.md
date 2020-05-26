@@ -14,15 +14,13 @@ This curious paper was published in ([Am. J. Phys. 58 (3), March 1990](https://a
 
 For a math-physics enthusiast, this is a hardcore click-bait title. So I dived in. If you are curious, please see the paper [here](https://fermatslibrary.com/s/feynmans-proof-of-the-maxwell-equations).   
 
-The algebra is simple enough, and one might think to understand it right away. Classic Feynman argumentation. The reality is that, after a little bit of probing my own understanding, I realized that nothing was really clear! My brain always tried to trick me like this, but I've learned this lesson many times. I do not know anything until I can explain all the details clearly. And trust me, the devil is always in the details. 
+The algebra is simple enough, and one might think to understand it right away. Classic Feynman argumentation. The reality is that, after a little bit of probing my own understanding, I realized that nothing was really clear! My brain always tried to trick me like this, but I've learned this lesson many times. I do not know anything until I can explain all the details clearly. And trust me, the devil is always in the details.
 
 Take for example the first argument line in 1D: Assume a particle exists with position $x$ and velocity $\dot{x}$ satisfying Newton's equation
 
-$$
-m\ddot{x} = F(x,\dot{x},t)\label{eq:newton}
-$$
+$$ m\ddot{x} = F(x,\dot{x},t)\label{eq:newton} $$
 
-with commutation relations $[x, x] = 0,$ $m[x, \dot{x}] = i\hbar$. 
+with commutation relations $[x, x] = 0,$ $m[x, \dot{x}] = i\hbar$.
 
 "Sure" you might say, "seems reasonable" since we have all seen these commutation relations before... Really though? What **is** the commutator of $x$ and $\dot{x}$? **What** is $x\dot{x}$? Is that multiplication?
 
@@ -42,7 +40,7 @@ We recognized above that $x$ and $p$ cannot be scalars in the typical sense, oth
 
 ### Operators  
 
-In Quantum Mechanics, the state of a system is described by a wave function $\psi(t)$, or sometimes written down as a "ket": $|\psi(t)>$. Don't be frightened, they are the same thing. Writing it like this just helps with some algebra. 
+In Quantum Mechanics, the state of a system is described by a wave function $\psi(t)$, or sometimes written down as a "ket": $|\psi(t)>$. Don't be frightened, they are the same thing. Writing it like this just helps with some algebra.
 
 When we try to observe some physical quantity $\mathcal{A}$ of the system, like its position or momentum, there exists an associated linear operator to that quantity $\hat{\mathcal{A}}$. The eigenvalues of $\hat{\mathcal{A}}$ correspond to the possible values that the physical quantity can take.  
 
@@ -52,28 +50,28 @@ So, if $\psi(x)$ is the wave function when the particle is in position "$x$", th
 $$
 \hat{\bf x} \psi(x) = x\psi(x) \nonumber
 $$
-where on the right side, the "$x$" is now a scalar multiplying the function $\psi(x)$. Operator on the left, scalar on the right. 
+where on the right side, the "$x$" is now a scalar multiplying the function $\psi(x)$. Operator on the left, scalar on the right.
 
-What is $\bf p$ then? 
+What is $\bf p$ then?
 $\bf{p}$ is the operator that represents a measurement of the momentum of a particle, but unlike $\bf x$, the associated operator analogue $\hat{\bf p}$ is easier to understand without heavy formalism. Yay!
 
 Given the wave like nature of the Schroedinger equation, it is an illustrative example to think of a plane wave to understand $p$. For a plane wave (representing perhaps a photon of a given frequency $\omega$), the wave function takes a simple form,
 $$
 \psi(t,x) = e^{i({k x} - \omega t)}\nonumber
 $$
-with the photon's momentum given by $p = k\hbar$. Notice that for this example, it is easy to see that in order to recover the momentum of the plane wave, it's enough to take the derivative and multiply by $\frac{\hbar}{i}$: 
+with the photon's momentum given by $p = k\hbar$. Notice that for this example, it is easy to see that in order to recover the momentum of the plane wave, it's enough to take the derivative and multiply by $\frac{\hbar}{i}$:
 $$
 \frac{\hbar}{i}\frac{\partial}{\partial x}\psi = \frac{\hbar}{i}ik e^{i({kx} - \omega t)} = k\hbar\ e^{i({k x} - \omega t)}= p\ \psi(t,x) \nonumber
 $$
 
-So as a first intuition, one might consider the momentum operator acting on a wave function $\psi$ as 
+So as a first intuition, one might consider the momentum operator acting on a wave function $\psi$ as
 $$
 \hat{\bf p}\ \psi = \frac{\hbar}{i}\frac{\partial}{\partial x} \psi \label{eq:momentum}
 $$
 
 For now, we will assume the form $\eqref{eq:momentum}$ for all wave functions, but you can see the notes at the end of the article for more details on a general case (instead of just a plane wave).
 
-### The proper proof of the commutation relation 
+### The proper proof of the commutation relation
 
 So now we have a proper description of both operators $\hat{\bf x}$ and $\hat{\bf p}$, and we can identify the commutator applied to a wave function $\psi$:
 $$
@@ -91,7 +89,7 @@ $$
 
 Remember above when I delegated the responsibility of explaining why $m\dot{x} = p$ to _future Gustavo_? Well, the future is here. sigh. **Time to clarify what is the relationship between $p$ and $\dot{x}$ as operators.**
 
-We'll start with $\dot{x}$ -- Typically, the dot signifies a time derivative. A time derivative of the position operator?But time derivatives are for functions that change in time.... soooo... how? 
+We'll start with $\dot{x}$ -- Typically, the dot signifies a time derivative. A time derivative of the position operator?But time derivatives are for functions that change in time.... soooo... how?
 
 Ok, let's start with exploring something simpler, like the evolution of a quantum system in time:  
 
@@ -99,33 +97,33 @@ Ok, let's start with exploring something simpler, like the evolution of a quantu
 
 Think of the evolution of an un-observed quantum system described by a wave function $\psi(t)$, that at some initial time started at a state $\psi(t_0)$.
 
-We can therefore define an _Evolution Operator_ $U(t,t_0)$ such that 
+We can therefore define an _Evolution Operator_ $U(t,t_0)$ such that
 
 $$
 |\psi(t)>\ = U(t,t_0)\ |\psi(t_0)> \nonumber
 $$
 
-as basically the operator that advances the state of a quantum system in time. We are interested in knowing how does this operator evolve in time, namely $\frac{d}{dt}U(t,t_0)$. 
+as basically the operator that advances the state of a quantum system in time. We are interested in knowing how does this operator evolve in time, namely $\frac{d}{dt}U(t,t_0)$.
 
-I'm not sure if it's better to explain why now, to motivate it, or if if should just find the derivative, and then use it... Let's motivate it first! 
+I'm not sure if it's better to explain why now, to motivate it, or if if should just find the derivative, and then use it... Let's motivate it first!
 
 #### Time derivative of a quantum operator
 
-To calculate the derivative of an operator, we need to compute it as a limit, 
+To calculate the derivative of an operator, we need to compute it as a limit,
 $$
 \frac{d}{dt} \hat{x}(t) = \lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon}(\hat{x}(t+\epsilon) - \hat{x}(t)), \nonumber
 $$
-meaning that we should apply the operator $\hat{x}(t+\epsilon)$ to a wave function $\psi$ and also apply the operator $\hat{x}(t)$ to the same wave function $\psi$, then subtract and divide by $\epsilon$. 
+meaning that we should apply the operator $\hat{x}(t+\epsilon)$ to a wave function $\psi$ and also apply the operator $\hat{x}(t)$ to the same wave function $\psi$, then subtract and divide by $\epsilon$.
 
-But you see what I'm doing there? I'm hiding things because $\psi$ is a function that depends on time as well, and the operators $\hat{x}(t)$ and $\hat{x}(t+\epsilon)$ can't act on the function $\psi$ at the same time $t$, since we need to remember that $\hat{x}$ is the operator that when you apply it to a quantum state, it should give you the collapsed _position_ of the particle whose evolution is being described by the probability density $\psi$. Therefore $\hat{x}(t+\epsilon)$ is asking for a measurement of the position of a particle at time $t+\epsilon$, and $\hat{x}(t)$ a measurement at time $t$. 
+But you see what I'm doing there? I'm hiding things because $\psi$ is a function that depends on time as well, and the operators $\hat{x}(t)$ and $\hat{x}(t+\epsilon)$ can't act on the function $\psi$ at the same time $t$, since we need to remember that $\hat{x}$ is the operator that when you apply it to a quantum state, it should give you the collapsed _position_ of the particle whose evolution is being described by the probability density $\psi$. Therefore $\hat{x}(t+\epsilon)$ is asking for a measurement of the position of a particle at time $t+\epsilon$, and $\hat{x}(t)$ a measurement at time $t$.
 
-Does that makes sense? You can't just mix the two operators. We need to include something else. This is where the **Evolution Operator** comes into play. Consider as well the inverse of $U$, $U^\dagger(t,t_0)$ so that 
+Does that makes sense? You can't just mix the two operators. We need to include something else. This is where the **Evolution Operator** comes into play. Consider as well the inverse of $U$, $U^\dagger(t,t_0)$ so that
 
 $$
 U^\dagger(t,t_0) U(t,t_0) = I \nonumber
 $$
 
-Intuitively, applying the operator $U^\dagger(t,t_0)$ is like taking a quantum state at time $t$, and looking back in time to $t_0$. The benefit of this is that we can now define properly the application of the position operator at two different times $t+\epsilon$ and $t$. 
+Intuitively, applying the operator $U^\dagger(t,t_0)$ is like taking a quantum state at time $t$, and looking back in time to $t_0$. The benefit of this is that we can now define properly the application of the position operator at two different times $t+\epsilon$ and $t$.
 
 For example, to sample $\hat{x}(t+\epsilon)$, first evolve the state of the initial quantum system to the time $t+\epsilon$, by applying $U(t+\epsilon,t_0)$:
 $$
@@ -137,7 +135,7 @@ $$
 U^\dagger(t+\epsilon, t_0)\ {\bf \hat{x}}\ U(t+\epsilon, t_0) |\psi(t_0)>\nonumber
 $$
 
-The result of this operation would be a scalar for the position $x(t+\epsilon)$ for the collapsed wave function at that position. Equivalently, to get the position at time $t$, all we have to do is compute: 
+The result of this operation would be a scalar for the position $x(t+\epsilon)$ for the collapsed wave function at that position. Equivalently, to get the position at time $t$, all we have to do is compute:
 $$
 U^\dagger(t,t_0)\ {\bf \hat{x}} \ U(t, t_0) |\psi(t_0)>.\nonumber
 $$
@@ -172,7 +170,7 @@ Since the eigenvectors of $H$ form a basis for the function space of possible wa
 
 $$
 \begin{equation}
-\hat{H}\ |u_E(t_0)>\ =  E\ |u_E(t_0)> 
+\hat{H}\ |u_E(t_0)>\ =  E\ |u_E(t_0)>
 \end{equation}\nonumber
 $$
 
@@ -180,7 +178,7 @@ Therefore, since the evolution of a system is given by Schroedinger equation, i.
 $$
 i\hbar\frac{d}{dt} u_E(t) = \hat{H}\ u_E(t) = E\ u_E(t) \nonumber
 $$
-we obtain that $u_E$​ satisfies a simple 1D differential equation. Then 
+we obtain that $u_E$​ satisfies a simple 1D differential equation. Then
 
 $$
 |u_E(t)> = e^{-i\omega(t-t_0)}|u_E(t_0)> = e^{-\frac{iE}{\hbar}(t-t_0)}|u_E(t_0)>,\nonumber
@@ -201,11 +199,11 @@ Where in the last line we recognize the functional equation:
 $$
 i\hbar \frac{d}{dt}U(t,t_0) = H\ U(t,t_0)\label{eq:evol_u}
 $$
-which is an equality of operators. 
+which is an equality of operators.
 
 #### Putting things together
 
-Going back to $\eqref{ref1}$, and replacing this equality $\eqref{eq:evol_u}$, we obtain that 
+Going back to $\eqref{ref1}$, and replacing this equality $\eqref{eq:evol_u}$, we obtain that
 $$
 \frac{d}{dt}\hat{x}(t) = - \frac{1}{i\hbar}U^\dagger(t,t_0) H^\dagger \hat{x}\ U(t,t_0) + U^\dagger(t,t_0)\ \hat{x}\ \frac{1}{i\hbar}H\ U(t,t_0) \\
 = \frac{1}{i\hbar}(-U^\dagger H {\color{red} U\ U^\dagger} \hat{x}\ U + U^\dagger\ \hat{x}\ {\color{red} U\ U^\dagger} H\ U) \\
@@ -216,16 +214,16 @@ $$
 
 Where we used that $H$ is Hermitian ( $H^\dagger = H$ ), a "multiplying by the identity" trick (in red), and the definition of the commutator to put things in the brackets. The last two lines are key, because we are using that the operators $U^\dagger H U$ and $U^\dagger \hat{x} U$ are just the time independent versions of $H(t),\ x(t)$, so we can reduce them back, and finally use the known commutator properties to get the last line.  
 
-Finally, to take the derivative of $H$ with respect to $p$, we will use the Hamiltonian for a particle under a potential $V(x)$, 
+Finally, to take the derivative of $H$ with respect to $p$, we will use the Hamiltonian for a particle under a potential $V(x)$,
 $$
 H = \frac{\hat{p}^2}{2m} + \hat{V}(x)\nonumber
 $$
-Then 
+Then
 $$
 \frac{d\hat{x}}{dt} = \frac{\hat{p}_x}{m}\nonumber
 $$
 
-which is exactly what we wanted, but we proved it **as operators!** 
+which is exactly what we wanted, but we proved it **as operators!**
 
 
 
@@ -238,17 +236,17 @@ $$
 m\ddot{x} = F(t,x,\dot{x}),\ \text{ and }\ [x,x] = 0,\ m[x,\dot{x}] = i\hbar \nonumber
 $$
 
-These assumptions look simple and familiar, but hidden behind them are the profound fundamentals of Quantum Mechanics, and how it differs from Classical Mechanics. 
+These assumptions look simple and familiar, but hidden behind them are the profound fundamentals of Quantum Mechanics, and how it differs from Classical Mechanics.
 
 How very tricky of Feynman to hide all the mathematical details to get on with calculating! I can imagine Dyson complaining to Feynman about rigor while Feynman, smiling, would shake his arms and head, impatiently following his [correct] intuition. This image, that may very well be false, makes me smile.    
 
-As we learned in this article, there is actually nothing wrong with this "intuitive" approach. All their claims were correct if you understood the context in which they were being discussed, so we can forgive Dyson and Feynman for their wonderfully creative disregard for rigorous mathematics! Specially since you know... they are masters of the subject. 
+As we learned in this article, there is actually nothing wrong with this "intuitive" approach. All their claims were correct if you understood the context in which they were being discussed, so we can forgive Dyson and Feynman for their wonderfully creative disregard for rigorous mathematics! Specially since you know... they are masters of the subject.
 
-There is a lot of other interesting aspects of this paper that I could write about, but I'll leave you with this: The approach of the paper is actually incorrect. It's missing something important as brought up by multiple editorial comments and by Dyson himself: 
+There is a lot of other interesting aspects of this paper that I could write about, but I'll leave you with this: The approach of the paper is actually incorrect. It's missing something important as brought up by multiple editorial comments and by Dyson himself:
 
 "*The Maxwell equations are relativistically invariant, while the Newtonian assumptions, which Feynman used for his proof, are nonrelativistic. The proof begins with assumptions invariant under Galilean transformations and ends with equations invariant under Lorentz transformations. How could this have happened? After all, it was the incompatibility between Galilean mechanics and Maxwell electrodynamics that led Einstein to special relativity in 1905. Yet here we find Galilean mechanics and Maxwell equations coexisting peacefully. Perhaps it was lucky that Einstein had not seen Feynman's proof when he started to think about relativity*."  
 
-So if this derivation is wrong because it started with nonrelativistic equations, what happens if we start, instead of with Newton's second law, with Dirac's equation? 
+So if this derivation is wrong because it started with nonrelativistic equations, what happens if we start, instead of with Newton's second law, with Dirac's equation?
 $$
 E^2 = m^2c^4 + p^2c^2\nonumber
 $$
@@ -268,10 +266,9 @@ $$
 \psi(x) = \frac{1}{(2\pi\hbar)^{\frac{3}{2}}} \int\limits_{\mathbb{R}^3} \Phi(p) e^{ik\cdot x} dp \nonumber
 $$
 
-where $\Phi(p)$ is the Fourier transform of $\psi$, so in the general case it is also true that the momentum operator acts like a derivative: 
+where $\Phi(p)$ is the Fourier transform of $\psi$, so in the general case it is also true that the momentum operator acts like a derivative:
 $$
 \frac{\hbar}{i}\frac{\partial}{\partial x}\psi = \frac{\hbar}{i}\frac{\partial}{\partial x}\left[\frac{1}{(2\pi\hbar)^{\frac{1}{2}}} \int\limits_{\mathbb{R}} \Phi(p) e^{ik\cdot x} dp\right]\\= \frac{\hbar}{i}\frac{1}{(2\pi\hbar)^{\frac{1}{2}}} \int\limits_{\mathbb{R}} \Phi(p) \frac{\partial}{\partial x} e^{ik\cdot x} dp \\= \frac{ik\hbar}{i}\left[\frac{1}{(2\pi\hbar)^{\frac{1}{2}}} \int\limits_{\mathbb{R}} \Phi(p) e^{ik\cdot x} dp\right]\\= k\hbar\ \psi\\= p\ \psi \nonumber
 $$
 
-The derivative goes inside the integral, because the only thing dependent on $x$ is the exponential function, but that one doesn't change after the derivative, except for the coefficients $ik$, which we pull back outside the integral. We recognize then that $p=k\hbar$ to finish out the proof. 
-
+The derivative goes inside the integral, because the only thing dependent on $x$ is the exponential function, but that one doesn't change after the derivative, except for the coefficients $ik$, which we pull back outside the integral. We recognize then that $p=k\hbar$ to finish out the proof.
