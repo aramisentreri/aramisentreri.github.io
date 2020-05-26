@@ -3,6 +3,7 @@ layout: post
 title: Feynman's proof of the Maxwell equations
 tags: [Physics]
 comments_id: 1
+use_math: true
 ---
 # Feynman's proof of the Maxwell equations
 
