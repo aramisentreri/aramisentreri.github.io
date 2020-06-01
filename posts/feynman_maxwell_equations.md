@@ -121,7 +121,7 @@ Intuitively, applying the operator $U^\dagger(t,t_0)$ is like taking a quantum s
 For example, to sample $\hat{x}(t+\epsilon)$, first evolve the state of the initial quantum system to the time $t+\epsilon$, by applying $U(t+\epsilon,t_0)$:
 $$ |\psi(t+\epsilon)> = U(t+\epsilon,t_0) |\psi(t_0)>. $$
 
-Now we can apply the position operator $\bf \hat{x}$ to this state to get the position at time $t+\epsilon$, and then revert back to the time independent state \\[|\psi(t_0)>\\] by applying the inverse $U^\dagger(t+\epsilon,t_0)$:
+Now we can apply the position operator $\bf \hat{x}$ to this state to get the position at time $t+\epsilon$, and then revert back to the time independent state $\psi(t_0)$ by applying the inverse $U^\dagger(t+\epsilon,t_0)$:
 
 $$ U^\dagger(t+\epsilon, t_0)\ {\bf \hat{x}}\ U(t+\epsilon, t_0) |\psi(t_0)> $$
 
@@ -130,13 +130,14 @@ $$ U^\dagger(t,t_0)\ {\bf \hat{x}} \ U(t, t_0) |\psi(t_0)>.$$
 
 Putting things together we obtain that the derivative of $x$ is
 
-$$ \lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t))|\psi> = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} \left(U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)\right)|\psi(t_0)> $$
+$$ \lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t)) \psi = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} \left(U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) $$
+$$ - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)\right) \psi(t_0) $$
 
 
 Let's use the classic trick of adding and subtracting an intermediary term: $U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)$,
 
-$$ \lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t)) = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} [U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) {\color{red}- U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)} $$
-$$ {\color{red}+ U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)} - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)]$$
+$$ \lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t)) = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} [U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) - {\color{red}U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)} $$
+$$ + {\color{red}U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)} - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)]$$
 $$ = \lim\limits_{\epsilon\rightarrow 0}(\frac{U^\dagger(t+\epsilon,t_0) - U^\dagger(t,t_0)}{\epsilon})\ \hat{x}\ U(t+\epsilon,t_0) $$
 $$ + \lim\limits_{\epsilon\rightarrow 0}U^\dagger(t,t_0)\ \hat{x}\ (\frac{U(t+\epsilon,t_0) - U(t,t_0)}{\epsilon})$$
 
@@ -149,7 +150,7 @@ $$ \frac{d}{dt}\hat{x}(t) = \frac{dU^\dagger}{dt}(t,t_0)\ \hat{x}\ U(t,t_0) + U^
 
 The evolution of an unobserved quantum system is described by the Hamiltonian, so we must find a relationship between $U(t,t_0)$ and $H(t)$. Lets provide the intuition.
 
-Since the eigenvectors of $H$ form a basis for the function space of possible wave functions $\psi(t)$, we can determine $U(t,t_0)$ by computing its effects on each eigenvector. If for example $|u_E(t_0)>$ is the eigenvector associated with the eigenvalue $E$, then,
+Since the eigenvectors of $H$ form a basis for the function space of possible wave functions $\psi(t)$, we can determine $U(t,t_0)$ by computing its effects on each eigenvector. If for example $u_E(t_0)$ is the eigenvector associated with the eigenvalue $E$, then,
 
 $$ \hat{H}\ |u_E(t_0)>\ =  E\ |u_E(t_0)>$$
 
@@ -165,7 +166,7 @@ where the last equality follows from $E= \hbar\omega$. Looking at that equation,
 
 $$ U(t,t_0) = e^{-i\frac{E}{\hbar}(t,t_0)} $$
 
-since then, $|u_E(t)> = U(t,t_0) |u_E(t_0)>$ . Equivalently, one might define more generally $U(t,t_0)$ by looking at the Schroedinger equation re-written in terms of $U$:
+since then, $u_E(t) = U(t,t_0) u_E(t_0)$ . Equivalently, one might define more generally $U(t,t_0)$ by looking at the Schroedinger equation re-written in terms of $U$:
 
 $$ i\hbar\frac{d}{dt} \psi(t) = H\ \psi(t)$$
 $$i\hbar \frac{d}{dt} U(t,t_0)\psi(t_0) = H\ U(t,t_0) \psi(t_0)$$
