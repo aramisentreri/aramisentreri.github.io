@@ -130,14 +130,14 @@ $$ U^\dagger(t,t_0)\ {\bf \hat{x}} \ U(t, t_0) |\psi(t_0)>.$$
 
 Putting things together we obtain that the derivative of $x$ is
 
-$$ \lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t)) \psi = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} \left(U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) $$
-$$ - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)\right) \psi(t_0) $$
+$$ \lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t)) \psi = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} (U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) $$
+$$ - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)) \psi(t_0) $$
 
 
 Let's use the classic trick of adding and subtracting an intermediary term: $U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)$,
 
-$$ \lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t)) = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} [U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) - {\color{red}U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)} $$
-$$ + {\color{red}U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)} - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)]$$
+$$ \lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t)) = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} [U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) - U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0) $$
+$$ + U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0) - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)]$$
 $$ = \lim\limits_{\epsilon\rightarrow 0}(\frac{U^\dagger(t+\epsilon,t_0) - U^\dagger(t,t_0)}{\epsilon})\ \hat{x}\ U(t+\epsilon,t_0) $$
 $$ + \lim\limits_{\epsilon\rightarrow 0}U^\dagger(t,t_0)\ \hat{x}\ (\frac{U(t+\epsilon,t_0) - U(t,t_0)}{\epsilon})$$
 
@@ -182,7 +182,7 @@ which is an equality of operators.
 Going back to identity for the evolution operator, and replacing this last equality of operators, we obtain that,
 
 $$ \frac{d}{dt}\hat{x}(t) = - \frac{1}{i\hbar}U^\dagger(t,t_0) H^\dagger \hat{x}\ U(t,t_0) + U^\dagger(t,t_0)\ \hat{x}\ \frac{1}{i\hbar}H\ U(t,t_0) $$
-$$ = \frac{1}{i\hbar}(-U^\dagger H {\color{red} U\ U^\dagger} \hat{x}\ U + U^\dagger\ \hat{x}\ {\color{red} U\ U^\dagger} H\ U) $$
+$$ = \frac{1}{i\hbar}(-U^\dagger H {\color{red}UU^\dagger} \hat{x}\ U + U^\dagger\ \hat{x}\ {\color{red}UU^\dagger} H\ U) $$
 $$ = \frac{1}{i\hbar}[U^\dagger \hat{x} U, U^\dagger H U] $$
 $$ = \frac{1}{i\hbar}[x(t), H(t)] $$
 $$ = \frac{\partial H}{\partial p_x}$$
@@ -191,9 +191,11 @@ $$ = \frac{\partial H}{\partial p_x}$$
 Where we used that $H$ is Hermitian ( $H^\dagger = H$ ), a "multiplying by the identity" trick (in red), and the definition of the commutator to put things in the brackets. The last two lines are key, because we are using that the operators $U^\dagger H U$ and $U^\dagger \hat{x} U$ are just the time independent versions of $H(t),\ x(t)$, so we can reduce them back, and finally use the known commutator properties to get the last line.  
 
 Finally, to take the derivative of $H$ with respect to $p$, we will use the Hamiltonian for a particle under a potential $V(x)$,
+
 $$ H = \frac{\hat{p}^2}{2m} + \hat{V}(x) $$
 
-Then
+Then,
+
 $$ \frac{d\hat{x}}{dt} = \frac{\hat{p}_x}{m} $$
 
 which is exactly what we wanted, but we proved it **as operators!**
@@ -218,6 +220,7 @@ There is a lot of other interesting aspects of this paper that I could write abo
 "*The Maxwell equations are relativistically invariant, while the Newtonian assumptions, which Feynman used for his proof, are nonrelativistic. The proof begins with assumptions invariant under Galilean transformations and ends with equations invariant under Lorentz transformations. How could this have happened? After all, it was the incompatibility between Galilean mechanics and Maxwell electrodynamics that led Einstein to special relativity in 1905. Yet here we find Galilean mechanics and Maxwell equations coexisting peacefully. Perhaps it was lucky that Einstein had not seen Feynman's proof when he started to think about relativity*."  
 
 So if this derivation is wrong because it started with nonrelativistic equations, what happens if we start, instead of with Newton's second law, with Dirac's equation?
+
 $$ E^2 = m^2c^4 + p^2c^2 $$
 
 
