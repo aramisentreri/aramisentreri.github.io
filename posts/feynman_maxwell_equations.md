@@ -138,6 +138,7 @@ Let's use the classic trick of adding and subtracting an intermediary term: $U^\
 
 $$ \lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t)) = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} [U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) - U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0) $$
 $$ + U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0) - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)]$$
+
 $$ = \lim\limits_{\epsilon\rightarrow 0}(\frac{U^\dagger(t+\epsilon,t_0) - U^\dagger(t,t_0)}{\epsilon})\ \hat{x}\ U(t+\epsilon,t_0) $$
 $$ + \lim\limits_{\epsilon\rightarrow 0}U^\dagger(t,t_0)\ \hat{x}\ (\frac{U(t+\epsilon,t_0) - U(t,t_0)}{\epsilon})$$
 
@@ -169,7 +170,9 @@ $$ U(t,t_0) = e^{-i\frac{E}{\hbar}(t,t_0)} $$
 since then, $u_E(t) = U(t,t_0) u_E(t_0)$ . Equivalently, one might define more generally $U(t,t_0)$ by looking at the Schroedinger equation re-written in terms of $U$:
 
 $$ i\hbar\frac{d}{dt} \psi(t) = H\ \psi(t)$$
+
 $$i\hbar \frac{d}{dt} U(t,t_0)\psi(t_0) = H\ U(t,t_0) \psi(t_0)$$
+
 $$\Rightarrow \left[i\hbar \frac{d}{dt}U(t,t_0) - H\ U(t,t_0)\right]\psi(t_0) = 0 $$
 
 Where in the last line we recognize the functional equation:
@@ -182,9 +185,13 @@ which is an equality of operators.
 Going back to identity for the evolution operator, and replacing this last equality of operators, we obtain that,
 
 $$ \frac{d}{dt}\hat{x}(t) = - \frac{1}{i\hbar}U^\dagger(t,t_0) H^\dagger \hat{x}\ U(t,t_0) + U^\dagger(t,t_0)\ \hat{x}\ \frac{1}{i\hbar}H\ U(t,t_0) $$
+
 $$ = \frac{1}{i\hbar}(-U^\dagger H {\color{red}UU^\dagger} \hat{x}\ U + U^\dagger\ \hat{x}\ {\color{red}UU^\dagger} H\ U) $$
+
 $$ = \frac{1}{i\hbar}[U^\dagger \hat{x} U, U^\dagger H U] $$
+
 $$ = \frac{1}{i\hbar}[x(t), H(t)] $$
+
 $$ = \frac{\partial H}{\partial p_x}$$
 
 
