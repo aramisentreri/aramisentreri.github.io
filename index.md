@@ -7,7 +7,7 @@ I am interested in anything related to mathematics, from numerical simulations o
 ## My projects
 _These are all half-baked ideas that get worked on whenever I have time_
 
-- Bazaar of Dragons - _a marketplace for table top miniatures_
+- [Bazaar of Dragons](www.bazaarofdragons.com) - _a marketplace for table top miniatures_
 - Diamond Matching - _a model for estimating the right prize of diamonds_
 - Singular limits in Liouville-type equations - _an extension to my undergraduate thesis_
 - Hollow stars - _what happens inside a non-equilibrium star?_
