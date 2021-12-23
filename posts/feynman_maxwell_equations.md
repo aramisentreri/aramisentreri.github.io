@@ -176,6 +176,7 @@ $$i\hbar \frac{d}{dt} U(t,t_0)\psi(t_0) = H\ U(t,t_0) \psi(t_0)$$
 $$\Rightarrow \left[i\hbar \frac{d}{dt}U(t,t_0) - H\ U(t,t_0)\right]\psi(t_0) = 0 $$
 
 Where in the last line we recognize the functional equation:
+
 $$ i\hbar \frac{d}{dt}U(t,t_0) = H\ U(t,t_0) $$
 
 which is an equality of operators.
