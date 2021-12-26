@@ -67,7 +67,7 @@ Well we need to define/understand the dual space to $V_p$ , typically referred t
 
 $f: V_p \rightarrow \mathbb{R}$ so that $f$ is linear.  
 
-This might sound like a complicated space, but actually is just as simple (or complex haha) as $V_p$, because if you remember from linear algebra, the only scalar linear functions over vectors are exactly transposed vectors! (like 
+This might sound like a complicated space, but actually is just as simple (or complex haha) as $V_p$, because if you remember from linear algebra, the only scalar linear functions over vectors are exactly transposed vectors! (like for example the function $w(v)$
 
 $$
 w(v) = [w_1,\dots,w_n]
