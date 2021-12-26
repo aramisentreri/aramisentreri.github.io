@@ -2,7 +2,7 @@
 layout: post
 title: What the hell is a tensor anyways?
 tags: [Physics, Mathematics]
-comments_id: 1
+comments_id: 2
 use_math: true
 ---
 # What the hell is a tensor anyways?

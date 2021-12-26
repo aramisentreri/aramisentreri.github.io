@@ -1,4 +1,4 @@
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
 <script>
 const GH_API_URL = 'https://api.github.com/repos/aramisentreri/aramisentreri.github.io/issues/{{ page.comments_id }}/comments';
 
@@ -7,7 +7,7 @@ request.open( 'GET', GH_API_URL, true );
 request.onload = function() {
 	if ( this.status >= 200 && this.status < 400 ) {
 		let response = JSON.parse( this.response );
-
+		
 		for ( var i = 0; i < response.length; i++ ) {
 			document.getElementById( 'gh-comments-list' ).appendChild( createCommentEl( response[ i ] ) );
 		}
