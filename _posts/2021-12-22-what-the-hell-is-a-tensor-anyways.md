@@ -49,6 +49,8 @@ $$
 
 which we wrote purposefully to look like this whole thing is "acting" on the function $f$, kind of like a directional derivative! Right???!  (It totally **is** a directional derivative when $M=\mathbb{R}^n$, but more on that some other time). 
 
+<img src="/assets/img/doCarmo_tangent.jpg" width="400" title="basis tangent vector">
+
 In other words, the vector $\alpha'(0)$ can be expressed in the parametrization $x$ by 
 
 $$
