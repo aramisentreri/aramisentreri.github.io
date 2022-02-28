@@ -1,10 +1,19 @@
-## Covariant derivative of a Tensor
+---
+layout: post
+title: Covariant derivatives are hard
+date: 2022-02-28 00:18:00 -0000
+tags: [Physics, Mathematics]
+comments_id: 3
+use_math: true
+---
+
+## Covariant derivatives are hard
 
 This last weekend I had a super good time with a friend, just spending a few hours figuring out some math from the physics behemoth "Gravity" by Misner, Wheeler and Thorne. I have some experience with general relativity and differential geometry, but I've never made it very far into the field, so we just opened the textbook, somewhere in Chapter 2, and looked in for entertainment: 
 
-Consider a 1-1 tensor $T$ (sometimes written as $T^i_j$ as well), and let's attempt to compute the covariant derivative of it.
+>Consider a 1-1 tensor $T$ (sometimes written as $T^i_j$ as well). How do you compute the covariant derivative of it?
 
-But first, what is the covariant derivative anyways?
+When we were about to try to answer the question, we looked at ourselves (in a little shock to be honest) and asked: What is the covariant derivative anyways?
 
 $\nabla_{\bf t} T = ??$ 
 
@@ -18,9 +27,11 @@ In some textbooks that lean towards the more abstract description of differentia
 
 But that is too abstract to my taste. The geometric way of understanding and defining the covariant derivative, and the one I thought I remembered, is related to the 4th point above: That covariant derivatives are related to tangent vectors and their role as directional derviatives.
 
-![](/assets/img/tanget_vector.png)
+<p align="center">
+<img src="/assets/img/tanget_vector.png">
+</p>
 
-Given a point $x$ in M, and a (tangent) vector $\bf t$  in $T_x$, consider a curve that passes through $x$ in the direction of $\bf t$ described by the parameter $t$: 
+Given a point $x$ in the manifold M, and a (tangent) vector $\bf t$  in $T_x$, consider a curve that passes through $x$ in the direction of $\bf t$ described by the parameter $t$: 
 
 $x (t)$ so that $x(0) = x$, and  $\frac{d x}{dt}\vert_{t=0} = {\bf t}$
 
@@ -59,31 +70,31 @@ $$
 \frac{d{\bf e_i}}{d x^\gamma}  = \sum\limits_{j}\Gamma^j_{i\gamma} {\bf e_j}
 $$
 
-where we are calling the coefficients as $\Gamma^j_{i\gamma}$, sometimes referred to as the _Christoffel symbols_. This is just a name for some constants, _don't freak out (not yet)._ 
+where we are calling the coefficients of this sum as $\Gamma^j_{i\gamma}$, sometimes referred to as the _Christoffel symbols_. This is just a name for some constants, _don't freak out (not yet)._ 
 
 Ok so, if we put some things together, for example noticing that $\frac{d x^\mu}{d t} = t^\mu$, exchanging the indices $i$ and $j$ on the second term, and renaming the $\gamma$ and $\mu$ indices as well, we get that 
 
-\label{eq:cov_der_scalar}
 $$
+\label{eq:cov_der_scalar}
 \nabla_{\bf t} T = T_{i,\mu} t^\mu {\bf e_i} + T_i \Gamma^j_{i\gamma} t^\gamma {\bf e_j} = T_{i,\mu} t^\mu {\bf e_i} + T_j \Gamma^i_{j\gamma} t^\gamma {\bf e_i} = (T_{i,\gamma} + T_j \Gamma^i_{j\gamma})t^\gamma{\bf e_i}
 $$
 
 So that in terms of components, some people chose to write the covariant derivative as 
 
-\label{eq:misleading}
 $$
+\label{eq:misleading}
 \nabla_{\gamma} T = T_{i;\gamma} = T_{i,\gamma} + \Gamma^i_{j\gamma} T_j
 $$
 
-but this is of course incomplete if not a little misleading too. The cruelty of geometers... (and mathematicians in general). This is what I would call an abuse of notation. It's only allowed if you are an expert in the field. For the rest of the mortals, please write everything out! 
+but this is of course incomplete if not a little **misleading** too. The cruelty of geometers... (and mathematicians in general). This is what I would call an abuse of notation. It's only allowed if you are an expert in the field. For the rest of the mortals, please write everything out! 
 
 
 
-## Second section
+## Second step on how to lose readers
 
-So just from this brief and intuitive analysis based on the geometric idea, we can see that we want the Covariant derivative (as described in equation \eqref{eq:misleading}) to be at least an operator that takes tangent vectors $T$ (aka 0-1 tensors), and transforms them into a **1-1 tensor**. 
+So just from this brief and intuitive analysis based on the geometric idea, we can see that we want the Covariant derivative (as described in the misleading equation) to be at least an operator that takes tangent vectors $T$ (aka 0-1 tensors), and transforms them into a **1-1 tensor**. 
 
-> Note: What is a 1-1 tensor anyway?  In equation \eqref{eq:misleading}, in order to complete the actual formula without abuse of notation, or better said to **complete the expression so that the outcome is a scalar**, one needs to "multiply" (and add with Einstein notation) the 2 terms: $t^\gamma$ and $e_i$, like in equation \eqref{eq:cov_der_scalar}. 
+> Note: What is a 1-1 tensor anyway?  In the misleading equation above, in order to complete the actual formula without abuse of notation, or better said to **complete the expression so that the outcome is a scalar**, one needs to "multiply" (and add with Einstein notation) the 2 terms: $t^\gamma$ and $e_i$, like in the equation for the derivative of $T$ above. 
 
 > We refer to $e_i$ as a tangent vector, because as we defined it above, it is a basis vector that lives in the tangent plane $T_x$ (at the point x). This is also a 0-1 tensor.
 
@@ -92,6 +103,7 @@ So just from this brief and intuitive analysis based on the geometric idea, we c
 $$
 \mathbb{L}(v) = t^\gamma v_\gamma
 $$
+
 >Note: Why is it then that this "linear functional" is also a set of numbers $t^\gamma$ that just multiply in order to act?
 
 >Well, this comes from the fact that the only linear functionals in a vector space are constants. (This is the same reason why matrices are boxes with numbers!)  
@@ -104,7 +116,7 @@ First it is important to understand what are we trying to do, or what does it me
 
 We need to concretize the problem: 
 
-> Say $w^i$ is a covariant vector 1-0 tensor. What does it mean to derive it covariantly?
+> Say $w^i$ is a covariant vector (aka 1-0 tensor). What does it mean to derive it covariantly?
 
 Well, the geometric idea in my mind is that now we have a field/function that is meant to operate on tangent vectors of different points in a manifold, but it acts (as a function) differently depending in which point of the manifold you are. 
 So the covariant derivative is trying to compute the rate of change of this linear function across the manifold in some tangent vector's direction. 
@@ -119,7 +131,9 @@ We will choose a particularly "easy" sequence of vectors $v(x)$ though: The basi
 $$
 e_j(w^k) = \delta^k_j
 $$
+
 Therefore,
+
 $$
 \nabla_t (e_j (w^k)) = 0
 $$
@@ -135,9 +149,11 @@ where the term $\frac{\partial e_j}{\partial e_i}$ is an awkward way of represen
 The same is actually happening in the second term, where the derivative $\frac{d w^k(x(t))}{dt}$ is also the covariant derivative, now of $w$.
 
 So we actually have:
+
 $$
 = (\nabla_{e_i}e_j) (w^k) t_i  + \frac{d e_j}{d w} (w^k) (\nabla_{e_i} w^k) t_i
 $$
+
 where we noticed again that $\frac{d x_i(t)}{dt} = t_i$.
 
 We can recognize a term here $(\nabla_{e_i}e_j) (w^k) = \Gamma_{ij}^l e_l (w^k) t_i$, from the definition of the Christoffel symbols, so that term is pretty solid. 
@@ -148,7 +164,7 @@ $$
 \frac{d e_j}{d w} (w^k)
 $$ 
 
-Well, this awkward symbols is representing the derivative of $e_j$ as a linear operator acting on the $w$'s, basically $e_j: V_x^\ast \rightarrow \mathbb{R}$, and this is the derivative of that operator...
+Well, this awkward symbol is representing the derivative of $e_j$ as a linear operator acting on the $w$'s, basically $e_j: V_x^\ast \rightarrow \mathbb{R}$, and this is the derivative of that operator...
 
 But what is the derivative of a linear operator? I'll gove you a hint, what is the derivative of $f(x) = ax$? What is the derivative of $f({\bf x}) = A{\bf x}$? 
 That's right! it's the operator constant itself!! $f' = a$ or $f' = A$, so we can conclude that 
@@ -162,6 +178,7 @@ So putting this together we get
 $$
 0 = \Gamma_{ij}^l e_l (w^k) t_i + e_j (\nabla_{e_i}w^k t_i)
 $$
+
 where the second term means in words "$e_j$ applied to $\nabla_{e_i} w^k t_i$". 
 
 Remember that we are doing this calculation because we are after the term $\nabla_{e_i} w^k$. Since this is the goal, putting a name to it can help us figure it out. Say we name it, 
@@ -169,6 +186,7 @@ Remember that we are doing this calculation because we are after the term $\nabl
 $$
 \nabla_{e_i} w^k = C_{il}^k w^l
 $$
+
 since it's a 1-0 tensor (that depends on the indices i, k), so we can write it on the basis $\{w^l\}$.
 
 So finally we have 
@@ -190,6 +208,84 @@ And since this should be true for all tangent vectors $t$, then we conclude that
 $$
 \nabla_{e_i} w^k = -\Gamma_{il}^k w^l
 $$
+
 (remember these objects have to be evaluated on tangent vectors).
 
 ## The final countdown 
+
+Now we finally made it to the final and easiest part, putting everything together. 
+> Note: This final derivation is typically the only thing included in other reasorces and even books sometime. *_Shakes fist in anger!_
+
+<p align="center">
+<img src="/assets/img/shake.jpg" alt="" width="100"/>
+</p>
+
+Anyways, lets consider a 1-1 tensor $T$, that can be described in its basis of "simple" 1-1 tensors 
+
+$$
+T = \sum_{i,j} T^i_j\  e_i\otimes w^j = T^i_j\  e_i\otimes w^j 
+$$
+
+where we are using Einstein sum notation in the last bit of the right. 
+
+So lets break it down before we try to compute the covatiant derivative of this whole thing: 
+
+$$
+T = \underbrace{T^i_j}_{\text{scalar}} \ \ \underbrace{\bf e_i}_{\text{covariant vector}} \otimes \ \ \ \underbrace{w^j}_{\text{tangent vector}}
+$$
+
+We know how to calculate the derivative of all these things! 
+
+Let's go: 
+
+$$
+\nabla_t T = \nabla_t (T^i_j e_i\otimes w^j)\\ 
+= (\nabla_t T^i_j) e_i\otimes w^j + T^i_j (\nabla_t e_i) \otimes w^j + T^i_j e_i\otimes (\nabla_t w^j)
+$$
+
+Firs term is the covariant derivative of a scalar, so it's just a directional derivative:
+
+$$
+\nabla_t T^i_j = \frac{\partial T^i_j}{\partial x^k} t_k = T^i_{j, k} \ t_k
+$$
+
+The second term is the covariant derivative of a basis tangent vector, which we calculated in the second part of this article: 
+
+$$
+\nabla_t e_i = \nabla_{e_k} e_i\  t_k = \Gamma^l_{ik} e_l\ t_k
+$$
+
+And the third term has the covariant derivative of a covariant vector (or 0-1 tensor), and it was calculated in the fourth section:
+
+$$
+\nabla_t w^j = \nabla_{e_l} w^k\ t_l = -\Gamma_{lk}^j\ w^l\ t_k
+$$
+
+Then putting it all together: 
+
+$$
+\nabla_t T = T^i_{j, k} \ t_k\ (e_i\otimes w^j) + T^i_j\ \Gamma^l_{ik}\  (e_l\ \otimes w^j)\ t_k - T^i_j\ \Gamma_{lk}^j\ (e_i\otimes \ w^l)\ t_k\\
+=  t_k [T^i_{j,k} + T^l_j \Gamma^i_{kl} - T^i_l \Gamma^l_{kj}] (e_i\otimes w^j)
+$$
+
+People would then write this omitting all the complexity like this: 
+
+$$
+\nabla_t T = T^i_{j,k} + T^l_j \Gamma^i_{kl} - T^i_l \Gamma^l_{kj}
+$$
+
+but this is _hopefully_ now an obvious omission of context and clear abuse of notation (which will keep us enraged until we dominate this material a little more.. perhaps...)
+
+## Conclusion
+Now that we know how to compute the covariant derivatives of all basis elements of both $V_x$ and $V_x^\ast$, we saw above that we have the power to compute it for 1-1 tensors using that magical basis $\{e_i\otimes w^j\}$
+
+But we are actually capable of extending this result for any tensor rank possible... we just need to write this tensor in that magical basis, and apply the product rule over and over and over, until all the factors of the basis $e_1\otimes\dots\otimes e_n \otimes w^1 \otimes \dots \otimes w^n$ are taken care of.   
+
+I'm not going to write it here but you get the idea. 
+
+Calculating these beasts seams almost attainable now... perhaps one might even venture that it is "mechanic"... But the secret is that understanding of the layers hiding behind the process is trickier than advertised, so I hope this article helps demystify what is going on a little bit. 
+
+Maybe next time we could review some calculations of real tensors (like the metric tensor, or the Energy-Momentum tensor from Electromagnetics) to concretize what we have covered today! Let me know in the comments what you think. 
+
+Happy covariant-derivating!
+

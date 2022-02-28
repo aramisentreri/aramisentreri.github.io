@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-mml-chtml.js">
+    </script>-->
+    <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+    </script>
+    <script
+  type="text/javascript"
+  charset="utf-8"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <script
+  type="text/javascript"
+  charset="utf-8"
+  src="https://vincenttam.github.io/javascripts/MathJaxLocal.js">
+    </script>
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>What the hell is a tensor anyways? | Gustavo’s site</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="What the hell is a tensor anyways?" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="What the hell is a tensor anyways?" />
+<meta property="og:description" content="What the hell is a tensor anyways?" />
+<link rel="canonical" href="http://localhost:4000/2021/12/22/what-the-hell-is-a-tensor-anyways.html" />
+<meta property="og:url" content="http://localhost:4000/2021/12/22/what-the-hell-is-a-tensor-anyways.html" />
+<meta property="og:site_name" content="Gustavo’s site" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-22T00:00:00-08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="What the hell is a tensor anyways?" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/img_4029.jpg"}},"datePublished":"2021-12-22T00:00:00-08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021/12/22/what-the-hell-is-a-tensor-anyways.html"},"url":"http://localhost:4000/2021/12/22/what-the-hell-is-a-tensor-anyways.html","description":"What the hell is a tensor anyways?","headline":"What the hell is a tensor anyways?","dateModified":"2021-12-22T00:00:00-08:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e81bb993b82f98541e3a0491c62a5e9754f69be3">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="http://localhost:4000/">Gustavo's site</a></h1>
+
+        
+          <img src="/assets/img/img_4029.jpg" alt="Logo" />
+        
+
+        <p>A compilation of my personal projects</p>
+
+        
+        <p class="view"><a href="https://github.com/aramisentreri/aramisentreri.github.io">View the Project on GitHub <small>aramisentreri/aramisentreri.github.io</small></a></p>
+        
+
+        
+
+        
+      </header>
+      <section>
+
+      <h1 id="what-the-hell-is-a-tensor-anyways">What the hell is a tensor anyways?</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>As I’m studying more and more differential geometry and general relativity (and being the noob that I am), I have to go back to this definition over and over again, so I thought that writing it down for good can help me (and hopefully others) get a quick refresher into <em>what is a Tensor anyways</em>.</p>
+
+<h2 id="context-first">Context first</h2>
+
+<p>To get the definition going, we need to give some context first: We are on a manifold $M$, and for every point $p$ in this manifold we consider its tangent space $T_pM$ as the set of all tangent vectors on this point.</p>
+
+<p>This is already tricky territory, because what we mean by “tangent vectors” is really directional derivatives that operate over smooth functions over the manifold. For example take a look at this definition of a <em>tangent vector</em> sneakely defined inside the definition of a differentiable curve in $M$ from do Carmo’s book:</p>
+
+<blockquote>
+  <p>The <em>tangent vector to the curve</em> $\alpha$ at $t=0$ is a function $\alpha’(0): \mathcal{D} \rightarrow \mathbb{R}$ given by</p>
+
+\[\label{eq:tangent_def}
+\alpha'(0) f = \frac{d(f \circ \alpha)}{dt}\vert_{t=0}\]
+
+  <p>A <em>tangent vector at $p$</em> is the tangent vector at $t=0$ of some curve $\alpha:(-\epsilon, \epsilon) \rightarrow M$ with $\alpha(0) = p$.</p>
+</blockquote>
+
+<p>*$\mathcal{D}$ is the set of all smooth functions $f$ over the manifold $M$.</p>
+
+<p>If we flesh out this definition a little more by choosing a parametrization $x: U \rightarrow M$ at $p=x(0)$, we can express the function $f$ and the curve $\alpha$ in this parametrization by</p>
+
+\[\nonumber f\circ x(q) = f(x_1, \dots, x_n),\ \ q = (x_1,\dots,x_n) \in U\]
+
+<p>and</p>
+
+\[x^{-1}\circ\alpha(t) = (x_1(t), \dots, x_n(t)).\]
+
+<p>Therefore, restricting $f$ to $\alpha$, we can expand the definition of a tangent vector from above and obtain:</p>
+
+\[\nonumber
+\alpha'(0) f = \frac{d(f \circ \alpha)}{dt}\vert_{t=0} = \frac{d}{dt} f(x_1(t),\dots,x_n(t))\vert_{t=0}\\
+= \sum\limits_{i=1}^{n} x_i'(0)(\frac{\partial f}{\partial x_i})\\
+= \left(\sum\limits_{i=1}^{n} x_i'(0)(\frac{\partial}{\partial x_i})_0\right) f\]
+
+<p>which we wrote purposefully to look like this whole thing is “acting” on the function $f$, kind of like a directional derivative! Right???!  (It totally <strong>is</strong> a directional derivative when $M=\mathbb{R}^n$, but more on that some other time).</p>
+
+<p><img src="/assets/img/doCarmo_tangent.jpg" width="400" title="basis tangent vector" /></p>
+
+<p>In other words, the vector $\alpha’(0)$ can be expressed in the parametrization $x$ by</p>
+
+\[\alpha'(0) = \sum\limits_{i=1}^{n} x_i'(0)(\frac{\partial}{\partial x_i})_0\]
+
+<p>Note: As we saw above, the choice of a parametrization $x$ determines an <em>associated basis</em> $\{ (\frac{\partial}{\partial x_1})_0, \dots, (\frac{\partial}{\partial x_n})_0\}$ in $T_pM$, but always remember that each of those basis elements are <strong>little derivatives!</strong></p>
+
+<hr />
+
+<p>Ok, fiuuuu! That was a lot, but there you have the definition of a tangent vector, and the set of all tangent vectors is called $T_pM$ or sometimes $V_p$ (which we will use in the following section). Alright. What else we need?</p>
+
+<p>Well we need to define/understand the dual space to $V_p$ , typically referred to as  $V_p^*$. The dual space is the collection of linear maps over $V_p$ , i.e. functions</p>
+
+<p>$f: V_p \rightarrow \mathbb{R}$ so that $f$ is linear.</p>
+
+<p>This might sound like a complicated space, but actually is just as simple (or complex haha) as $V_p$, because if you remember from linear algebra, the only scalar linear functions over vectors are exactly transposed vectors! (like for example the function $w(v)$</p>
+
+<p>\(w(v) = [w_1,\dots,w_n]
+    \left[
+        \begin{array}{c} 
+            v_1 \\ 
+            \dots \\ 
+            v_n 
+        \end{array} 
+    \right] \\\)
+\(= \sum\limits_i^n w_i v_i\))</p>
+
+<p>So it shouldn’t be a surprise to hear that if for example $\{v_1,\dots,v_n\}$ is a basis of $V_p$, then $\{ v_1^\ast, \dots, v_n^\ast \}$ defined by</p>
+
+\[\nonumber
+v_i^*(v_j) = \delta^i_j\]
+
+<p>is a basis for $V_p^\ast$! (just imagine the vector $v_i = [0,\dots, 1, \dots, 0]^T$ and its dual $ v_i^*=[0,\dots, 1, \dots, 0]$)</p>
+
+<p>Ok, we have everything we need to define a tensor.</p>
+
+<h2 id="tensor-definition">Tensor definition</h2>
+
+<p>A tensor $T$ of type $(k,l)$ over $V_p$ is a multilinear map</p>
+
+\[T: \underbrace{V_p^*\times\dots \times V_p^*}_{k \text{ times}} \times \underbrace{ V_p\times\dots\times V_p}_{l\text{ times}} \rightarrow \mathbb{R}\]
+
+<p>i.e. given $k$ dual vectors and $l$ ordinary vectors, $T$ produces a real number!</p>
+
+<p>For example, lets consider a 1-1 tensor $T: V_p^* \times V_p \rightarrow \mathbb{R}$, one dual vector $w\in V_p^*$,  and one ordinary vector $v\in V_p$ , then $T(w,v)$ is a scalar.</p>
+
+<p>But this is way too abstract! To put things concretely we can write T using its “action” on the basis elements of $V_p$ and $V_p^*$ because it is a multilinear map. For example, let’s use the basis for $V_p$ that we described in the context section $\{(\frac{\partial}{\partial x_1})_0, \dots, (\frac{\partial}{\partial x_n})_0\}$, but rename it a bit for ease of reading and manipulation, say</p>
+
+\[e_i := \frac{\partial }{\partial x_i}\]
+
+<p>so that we have a basis of vectors $\{e_1,\dots,e_n\}$, and their dual vectors $\{w^1,\dots,w^n\}$ , defined so that $w^i(e_j) = \delta^i_j$.</p>
+
+<blockquote>
+  <p>Notice that we are putting the index “i” on the bottom for tangent vectors, and on the top for dual vectors to differentiate them.</p>
+
+  <p>THIS IS IMPORTANT AND A HUGE SOURCE OF CONFUSION SOMETIMES #physicistscryinginthelibrary</p>
+</blockquote>
+
+<p>So lets get applying T to these basis elements, for example the first elements: $T(w^1,e_1)$. This is a scalar, and lets call it</p>
+
+\[\nonumber T^1_1 := T(w^1,e_1)\]
+
+<p>The same thing can be done with any pair $(w^i,\ e_j)$, so that we can describe T by the components</p>
+
+\[\nonumber T^i_j := T(w^i, e_j)\]
+
+<p>This is going to be the typical way in which we will compute things with tensors; In their “components” or “coordinate” form, coefficients of an otherwise multilinear functional (sometimes to absurd levels like  $T^{\alpha i j k\gamma}_{l s \beta}$ )</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Hopefully this article would be a good reference to anyone (me in particular lol) for whenever the concept of “Tensor” gets confusing and we need a refresher.</p>
+
+<p>We went over the basic definitions required to be able to define what is a Tensor. We learned about <em>tangent vectors</em>, the tangent space $T_pM$ (or $V_p$), its dual space $V_p^\ast$ and its inhabitants the <em>dual vectors</em>, and finally we defined what a Tensor is and how to describe it with a given set of coordinates.</p>
+
+<p>So with all this in mind answer me this:</p>
+
+<p><strong>Is a vector … a tensor?</strong></p>
+
+<p>I’ll leave you to think about it, but the answer is in the comments.</p>
+
+
+      
+			   <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
+<script>
+const GH_API_URL = 'https://api.github.com/repos/aramisentreri/aramisentreri.github.io/issues/2/comments';
+
+let request = new XMLHttpRequest();
+request.open( 'GET', GH_API_URL, true );
+request.onload = function() {
+	if ( this.status >= 200 && this.status < 400 ) {
+		let response = JSON.parse( this.response );
+		
+		for ( var i = 0; i < response.length; i++ ) {
+			document.getElementById( 'gh-comments-list' ).appendChild( createCommentEl( response[ i ] ) );
+		}
+
+		if ( 0 === response.length ) {
+			document.getElementById( 'no-comments-found' ).style.display = 'none';
+		}
+	} else {
+		console.error( this );
+	}
+};
+
+function createCommentEl( response ) {
+	let user = document.createElement( 'a' );
+	user.setAttribute( 'href', response.user.url.replace( 'api.github.com/users', 'github.com' ) );
+	user.classList.add( 'user' );
+
+	let userAvatar = document.createElement( 'img' );
+	userAvatar.classList.add( 'avatar' );
+	userAvatar.setAttribute( 'src', response.user.avatar_url );
+	userAvatar.setAttribute( 'height', '40' );
+	userAvatar.setAttribute( 'width', '40' );
+
+	user.appendChild( userAvatar );
+
+	let commentLink = document.createElement( 'a' );
+	commentLink.setAttribute( 'href', response.html_url );
+	commentLink.classList.add( 'comment-url' );
+	commentLink.innerHTML = '#' + response.id + ' - ' + response.created_at;
+
+	let commentContents = document.createElement( 'div' );
+	commentContents.classList.add( 'comment-content' );
+	commentContents.innerHTML = marked( response.body );
+
+	let comment = document.createElement( 'li' );
+	comment.setAttribute( 'data-created', response.created_at );
+	comment.setAttribute( 'data-author-avatar', response.user.avatar_url );
+	comment.setAttribute( 'data-user-url', response.user.url );
+
+	comment.appendChild( user );
+	comment.appendChild( commentContents );
+	comment.appendChild( commentLink );
+
+	return comment;
+}
+request.send();
+</script>
+
+<hr>
+
+<div class="github-comments">
+	<h2>Comments</h2>
+	<p id="leave-a-comment">Join the discussion for this article by clicking <a href="https://github.com/aramisentreri/aramisentreri.github.io/issues/2">Here</a>. Comments appear on this page instantly.</p>
+	<ul id="gh-comments-list"></ul>
+	<p id="no-comments-found">No comments found for this article.</p>
+
+</div>
+
+	    
+
+      </section>
+
+      <footer>
+        
+        <p>This project is maintained by <a href="https://github.com/aramisentreri">aramisentreri</a></p>
+        
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a>, with little tweaks by Gustavo</small></p>
+      </footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+    
+
+  </body>
+</html>
