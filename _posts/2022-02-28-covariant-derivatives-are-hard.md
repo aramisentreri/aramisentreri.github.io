@@ -3,7 +3,7 @@ layout: post
 title: Covariant derivatives are hard
 date: 2022-02-28 00:18:00 -0000
 tags: [Physics, Mathematics]
-comments_id: 3
+comments_id: 4
 use_math: true
 ---
 
