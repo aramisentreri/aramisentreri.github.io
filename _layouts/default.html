@@ -49,6 +49,47 @@
         <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
         {% endif %}
 
+        {% if site.github.is_project_page %}
+          
+                    <!-- Begin Mailchimp Signup Form -->
+          <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7_dtp.css" rel="stylesheet" type="text/css">
+          <style type="text/css">
+            #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;  width:250px;}
+            #mc_embed_signup .button {clear:both; background-color: rgb(255, 255, 255); border: 0 none; border-radius:4px; 
+              transition: all 0.23s ease-in-out 0s; color: #267CB9; cursor: pointer; display: inline-block; 
+              font-size:15px; font-weight: normal; height: 32px; line-height: 32px; margin: 0 5px 10px 0; padding: 0 22px; 
+              text-align: center; text-decoration: none; vertical-align: top; white-space: nowrap; width: fit-content; width: -moz-fit-content;}
+            /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+              We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+          </style>
+          <div id="mc_embed_signup">
+          <form action="https://bazaarofdragons.us19.list-manage.com/subscribe/post?u=92959eee672c3f582256b035f&amp;id=6d43377d61" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+              <div id="mc_embed_signup_scroll">
+            <p>Subscribe to know when a new blog post is up:</p>
+            <p>(I'll never sell your information)</p>
+          <div class="mc-field-group">
+            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+          </div>
+          <div hidden="true"><input type="hidden" name="tags" value="4992429"></div>
+            <div id="mce-responses" class="clear foot">
+              <div class="response" id="mce-error-response" style="display:none"></div>
+              <div class="response" id="mce-success-response" style="display:none"></div>
+            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_92959eee672c3f582256b035f_6d43377d61" tabindex="-1" value=""></div>
+                  <div class="optionalParent">
+                      <div class="clear foot">
+                          <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                          <p class="brandingLogo"><a href="http://eepurl.com/g2ss0j" title="Mailchimp - email marketing made easy and fun"><img src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a></p>
+                      </div>
+                  </div>
+              </div>
+          </form>
+          </div>
+          <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+          <!--End mc_embed_signup-->
+        {% endif %}
+
+        
         {% if site.github.is_user_page %}
         <p class="view"><a href="{{ site.github.owner_url }}">View My GitHub Profile</a></p>
         {% endif %}
@@ -66,7 +107,6 @@
       {{ content }}
 
       </section>
-
 
       <footer>
         {% if site.github.is_project_page %}
