@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-28T00:25:38-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Gustavo’s site</title><subtitle>A compilation of my personal projects</subtitle><entry><title type="html">Covariant derivatives are hard</title><link href="http://localhost:4000/2022/02/27/covariant-derivatives-are-hard.html" rel="alternate" type="text/html" title="Covariant derivatives are hard" /><published>2022-02-27T16:18:00-08:00</published><updated>2022-02-27T16:18:00-08:00</updated><id>http://localhost:4000/2022/02/27/covariant-derivatives-are-hard</id><content type="html" xml:base="http://localhost:4000/2022/02/27/covariant-derivatives-are-hard.html">&lt;h2 id=&quot;covariant-derivatives-are-hard&quot;&gt;Covariant derivatives are hard&lt;/h2&gt;
+
+&lt;p&gt;This last weekend I had a super good time with a friend, just spending a few hours figuring out some math from the physics behemoth “Gravity” by Misner, Wheeler and Thorne. I have some experience with general relativity and differential geometry, but I’ve never made it very far into the field, so we just opened the textbook, somewhere in Chapter 2, and looked in for entertainment:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Consider a 1-1 tensor $T$ (sometimes written as $T^i_j$ as well). How do you compute the covariant derivative of it?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;When we were about to try to answer the question, we looked at ourselves (in a little shock to be honest) and asked: What is the covariant derivative anyways?&lt;/p&gt;
+
+&lt;p&gt;$\nabla_{\bf t} T = ??$&lt;/p&gt;
+
+&lt;p&gt;In some textbooks that lean towards the more abstract description of differential geometry (like in Wald’s General Relativity for example), they define it as an operator that satisfy a few properties:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Linearity&lt;/li&gt;
+  &lt;li&gt;Leibnitz/Product rule&lt;/li&gt;
+  &lt;li&gt;Commutativity with contraction&lt;/li&gt;
+  &lt;li&gt;Its effect on scalar functions, more specifically consistency with the notion of tangent vectors as directional derivatives on scalar fields.&lt;/li&gt;
+  &lt;li&gt;Torsion free (this one being optional some times)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;But that is too abstract to my taste. The geometric way of understanding and defining the covariant derivative, and the one I thought I remembered, is related to the 4th point above: That covariant derivatives are related to tangent vectors and their role as directional derviatives.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/img/tanget_vector.png&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Given a point $x$ in the manifold M, and a (tangent) vector $\bf t$  in $T_x$, consider a curve that passes through $x$ in the direction of $\bf t$ described by the parameter $t$:&lt;/p&gt;
+
+&lt;p&gt;$x (t)$ so that $x(0) = x$, and  $\frac{d x}{dt}\vert_{t=0} = {\bf t}$&lt;/p&gt;
+
+&lt;p&gt;With this parametrization of the curve, we can define the covariant derivate of &lt;strong&gt;another vector $T$&lt;/strong&gt; (the name $T$ is &lt;em&gt;forshadowing&lt;/em&gt;!) as simply the rate of change of the vector along this parametrized curve $T(x(t))$:&lt;/p&gt;
+
+\[\nabla_{\bf t} T = \frac{d T (x(t))}{dt}\vert_{t=0}\]
+
+&lt;p&gt;This intuition works pretty well for vector fields, so I cound end this post here like everyone else does… But that is so cheating! The hardest part, how the covariant derivative is defined for more general objects than vectors, is still unexplained! And my goal is always to uncover these hidden secrets. So let’s buckle up.&lt;/p&gt;
+
+&lt;h2 id=&quot;going-deeper-or-step-1-on-how-to-lose-readers&quot;&gt;Going deeper (or step 1 on how to lose readers)&lt;/h2&gt;
+
+&lt;p&gt;Turns out that vectors are very intuitive because they are based on visual cues that can be observed in our drawings of Euclidean geometry… Higher dimensional manifolds don’t have any of those things, so we started to invent generalizations of vectors and other geometric properties which we called Tensors (and you can learn more about them in my &lt;a href=&quot;/_posts/2021-12-22-what-the-hell-is-a-tensor-anyways.md&quot;&gt;previous post&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Vectors correspond to what is called as &lt;em&gt;0-1 tensors&lt;/em&gt;, because you can write a tensor/vector as a sum over the basis of the tangent plane at the point $T_x$:&lt;/p&gt;
+
+\[T = \sum\limits_{i=1}^nT_i {\bf e_i} = T_i {\bf e_i} \text{ (using Einstein sumation convention)}\]
+
+&lt;p&gt;Where the $\bf e_i$ are basis vectors of the vector space $T_x$. Therefore the parametric definition of the covariant derivative looks like:&lt;/p&gt;
+
+\[\nabla_{\bf t} T =  \frac{d T (x(t))}{dt} = \frac{d}{dt}(T_i {\bf e_i}) = \frac{d T_i(x(t))}{dt} {\bf e_i}  + T_i \frac{d {\bf e_i}(x(t))}{dt}\]
+
+\[= \frac{\partial T_i}{\partial x^\mu}\frac{d x^\mu}{d t} {\bf e_i} + T_i  \frac{d {\bf e_i}}{d x^\gamma} \frac{d x^\gamma}{d t}\]
+
+&lt;p&gt;Where we first notice that $\frac{\partial T_i}{\partial x^\mu}$ is well defined as it is just the derivative of the &lt;strong&gt;scalar function&lt;/strong&gt; $T_i$ along the curve component $x^\mu$ of the curve $x(t)$.&lt;/p&gt;
+
+&lt;p&gt;Then we notice on the second term of the sum, that $\frac{d{\bf e_i}}{d x^\gamma}$ is &lt;strong&gt;a vector&lt;/strong&gt; as well (the variation of $e_i$ along the curved trajectory), so it can be written as a sum of the basis vectors $\bf e_i$&lt;/p&gt;
+
+\[\frac{d{\bf e_i}}{d x^\gamma}  = \sum\limits_{j}\Gamma^j_{i\gamma} {\bf e_j}\]
+
+&lt;p&gt;where we are calling the coefficients of this sum as $\Gamma^j_{i\gamma}$, sometimes referred to as the &lt;em&gt;Christoffel symbols&lt;/em&gt;. This is just a name for some constants, &lt;em&gt;don’t freak out (not yet).&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Ok so, if we put some things together, for example noticing that $\frac{d x^\mu}{d t} = t^\mu$, exchanging the indices $i$ and $j$ on the second term, and renaming the $\gamma$ and $\mu$ indices as well, we get that&lt;/p&gt;
+
+\[\label{eq:cov_der_scalar}
+\nabla_{\bf t} T = T_{i,\mu} t^\mu {\bf e_i} + T_i \Gamma^j_{i\gamma} t^\gamma {\bf e_j} = T_{i,\mu} t^\mu {\bf e_i} + T_j \Gamma^i_{j\gamma} t^\gamma {\bf e_i} = (T_{i,\gamma} + T_j \Gamma^i_{j\gamma})t^\gamma{\bf e_i}\]
+
+&lt;p&gt;So that in terms of components, some people chose to write the covariant derivative as&lt;/p&gt;
+
+\[\label{eq:misleading}
+\nabla_{\gamma} T = T_{i;\gamma} = T_{i,\gamma} + \Gamma^i_{j\gamma} T_j\]
+
+&lt;p&gt;but this is of course incomplete if not a little &lt;strong&gt;misleading&lt;/strong&gt; too. The cruelty of geometers… (and mathematicians in general). This is what I would call an abuse of notation. It’s only allowed if you are an expert in the field. For the rest of the mortals, please write everything out!&lt;/p&gt;
+
+&lt;h2 id=&quot;second-step-on-how-to-lose-readers&quot;&gt;Second step on how to lose readers&lt;/h2&gt;
+
+&lt;p&gt;So just from this brief and intuitive analysis based on the geometric idea, we can see that we want the Covariant derivative (as described in the misleading equation) to be at least an operator that takes tangent vectors $T$ (aka 0-1 tensors), and transforms them into a &lt;strong&gt;1-1 tensor&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note: What is a 1-1 tensor anyway?  In the misleading equation above, in order to complete the actual formula without abuse of notation, or better said to &lt;strong&gt;complete the expression so that the outcome is a scalar&lt;/strong&gt;, one needs to “multiply” (and add with Einstein notation) the 2 terms: $t^\gamma$ and $e_i$, like in the equation for the derivative of $T$ above.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;We refer to $e_i$ as a tangent vector, because as we defined it above, it is a basis vector that lives in the tangent plane $T_x$ (at the point x). This is also a 0-1 tensor.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In contrast, we consider $t^\gamma$ to be a covariant vector, or a 1-0 tensor, because in order to get a scalar one needs to “multiply” it with a 0-1 vector (like the $e_i$ for example). One can think of covariant or 1-0 tensors as linear functions on the tangent space $T_x$, as in they act/operate on vectors, like a linear function:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+\[\mathbb{L}(v) = t^\gamma v_\gamma\]
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note: Why is it then that this “linear functional” is also a set of numbers $t^\gamma$ that just multiply in order to act?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Well, this comes from the fact that the only linear functionals in a vector space are constants. (This is the same reason why matrices are boxes with numbers!)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;But don’t worry if you don’t grasp this right away. Thinking like this takes some time. I don’t want to encourage you skip it though, cause Physicists normally would underplay the importance of understanding that fact (that 1-0 tensors or covariant vectors are linear functions over the tangent space of vectors), but later on when one tries to look at harder material, this gap will cost you greatly.&lt;/p&gt;
+
+&lt;h2 id=&quot;going-even-deeper-what-happens-if-we-take-the-covariant-derivative-of-a-covariant-vector-1-0-tensor&quot;&gt;Going even deeper: What happens if we take the covariant derivative of a covariant vector (1-0 tensor)?&lt;/h2&gt;
+
+&lt;p&gt;First it is important to understand what are we trying to do, or what does it mean to compute the covariant derivate of a 1-0 tensor? What are we after?&lt;/p&gt;
+
+&lt;p&gt;We need to concretize the problem:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Say $w^i$ is a covariant vector (aka 1-0 tensor). What does it mean to derive it covariantly?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Well, the geometric idea in my mind is that now we have a field/function that is meant to operate on tangent vectors of different points in a manifold, but it acts (as a function) differently depending in which point of the manifold you are. 
+So the covariant derivative is trying to compute the rate of change of this linear function across the manifold in some tangent vector’s direction.&lt;/p&gt;
+
+&lt;p&gt;Since we want to compute a derivative of $w^i$ , we have to do this at a point of the manifold $x$, and in some direction $\bf t$ that lives in the tangent plane at x, so just like before, we consider a parametrization $x^\mu (t)$ so that $\frac{d x^\mu}{dt}\vert_{t=0} = {\bf t}$. But notice that now we want to evaluate $w$ along the curve (not just at one point $x$)! The point $x$ is somewhat changing, and therefore so is the tangent plane $T_x$. This means that we actually need to choose a sequence of vectors $v(x)\in T_x$ for $x$ along the curve.  Then, as we apply $w(x)$ onto $v(x)$, we get a scalar that changes along the curve, and we can take the derivative of this scalar.&lt;/p&gt;
+
+&lt;p&gt;With all of that context in the background, we can proceed to do the typical calculation that will give us the covariant derivative of a 1-0 tensor as it is presented everywhere.&lt;/p&gt;
+
+&lt;p&gt;We will choose a particularly “easy” sequence of vectors $v(x)$ though: The basis element $e_j$. This is a cool trick because their mutual application is straightforward by definition of the base elements $w^k$ of $V_x^\ast$:&lt;/p&gt;
+
+\[e_j(w^k) = \delta^k_j\]
+
+&lt;p&gt;Therefore,&lt;/p&gt;
+
+\[\nabla_t (e_j (w^k)) = 0\]
+
+&lt;p&gt;Remember that this is a scalar over the manifold, so we should be able to take its covariant derivative as the normal derivative along a curve that passes through the point x in the direction of $\bf t$. In a way there is a hidden dependance on the point $x$ that made explicit looks like $e_j(x(t), w^k)$. Therefore, if we apply the chain rule to the components of $x$ and then to $w$,&lt;/p&gt;
+
+\[\frac{d}{dt} (e_j(x(t), w^k)) = \frac{\partial e_j}{\partial e_i} \frac{d x_i(t)}{dt} (w^k) +  \frac{d e_j}{d w} (w^k) \frac{d w^k(x(t))}{dt}\]
+
+&lt;p&gt;where the term $\frac{\partial e_j}{\partial e_i}$ is an awkward way of representing the derivative of the components $e_j$ along the curve $x(t)$ (sorry, I didn’t want to use other symbols to not skip steps), but THAT IS EXACTLY THE DEFINITION OF THE COVARIANT DERIVATIVE!&lt;/p&gt;
+
+&lt;p&gt;The same is actually happening in the second term, where the derivative $\frac{d w^k(x(t))}{dt}$ is also the covariant derivative, now of $w$.&lt;/p&gt;
+
+&lt;p&gt;So we actually have:&lt;/p&gt;
+
+\[= (\nabla_{e_i}e_j) (w^k) t_i  + \frac{d e_j}{d w} (w^k) (\nabla_{e_i} w^k) t_i\]
+
+&lt;p&gt;where we noticed again that $\frac{d x_i(t)}{dt} = t_i$.&lt;/p&gt;
+
+&lt;p&gt;We can recognize a term here $(\nabla_{e_i}e_j) (w^k) = \Gamma_{ij}^l e_l (w^k) t_i$, from the definition of the Christoffel symbols, so that term is pretty solid.&lt;/p&gt;
+
+&lt;p&gt;Now what about the weirdo&lt;/p&gt;
+
+\[\frac{d e_j}{d w} (w^k)\]
+
+&lt;p&gt;Well, this awkward symbol is representing the derivative of $e_j$ as a linear operator acting on the $w$’s, basically $e_j: V_x^\ast \rightarrow \mathbb{R}$, and this is the derivative of that operator…&lt;/p&gt;
+
+&lt;p&gt;But what is the derivative of a linear operator? I’ll gove you a hint, what is the derivative of $f(x) = ax$? What is the derivative of $f({\bf x}) = A{\bf x}$? 
+That’s right! it’s the operator constant itself!! $f’ = a$ or $f’ = A$, so we can conclude that&lt;/p&gt;
+
+\[\frac{d e_j}{d w} (w^k) = e_j\]
+
+&lt;p&gt;So putting this together we get&lt;/p&gt;
+
+\[0 = \Gamma_{ij}^l e_l (w^k) t_i + e_j (\nabla_{e_i}w^k t_i)\]
+
+&lt;p&gt;where the second term means in words “$e_j$ applied to $\nabla_{e_i} w^k t_i$”.&lt;/p&gt;
+
+&lt;p&gt;Remember that we are doing this calculation because we are after the term $\nabla_{e_i} w^k$. Since this is the goal, putting a name to it can help us figure it out. Say we name it,&lt;/p&gt;
+
+\[\nabla_{e_i} w^k = C_{il}^k w^l\]
+
+&lt;p&gt;since it’s a 1-0 tensor (that depends on the indices i, k), so we can write it on the basis ${w^l}$.&lt;/p&gt;
+
+&lt;p&gt;So finally we have&lt;/p&gt;
+
+\[0 = \Gamma_{ij}^l e_l(w^k) t_i  + e_j(C_{il}^k w^l t_i)\]
+
+\[0 = \Gamma_{ij}^l \delta_l^k t_i + e_j(w^l) C_{il}^k t_i\]
+
+\[-\Gamma_{ij}^k t_i = C_{ij}^k t_i\]
+
+&lt;p&gt;And since this should be true for all tangent vectors $t$, then we conclude that the coefficients $C_{ij}^k = - \Gamma_{ij}^k$, which means that the covariant derivative of a 0-1 tensor $w$ in the direction of a basis vector $e_i$ is a 1-0 tensor that looks like,&lt;/p&gt;
+
+\[\nabla_{e_i} w^k = -\Gamma_{il}^k w^l\]
+
+&lt;p&gt;(remember these objects have to be evaluated on tangent vectors).&lt;/p&gt;
+
+&lt;h2 id=&quot;the-final-countdown&quot;&gt;The final countdown&lt;/h2&gt;
+
+&lt;p&gt;Now we finally made it to the final and easiest part, putting everything together.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Note: This final derivation is typically the only thing included in other reasorces and even books sometime. *&lt;em&gt;Shakes fist in anger!&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/img/shake.jpg&quot; alt=&quot;&quot; width=&quot;100&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Anyways, lets consider a 1-1 tensor $T$, that can be described in its basis of “simple” 1-1 tensors&lt;/p&gt;
+
+\[T = \sum_{i,j} T^i_j\  e_i\otimes w^j = T^i_j\  e_i\otimes w^j\]
+
+&lt;p&gt;where we are using Einstein sum notation in the last bit of the right.&lt;/p&gt;
+
+&lt;p&gt;So lets break it down before we try to compute the covatiant derivative of this whole thing:&lt;/p&gt;
+
+\[T = \underbrace{T^i_j}_{\text{scalar}} \ \ \underbrace{\bf e_i}_{\text{covariant vector}} \otimes \ \ \ \underbrace{w^j}_{\text{tangent vector}}\]
+
+&lt;p&gt;We know how to calculate the derivative of all these things!&lt;/p&gt;
+
+&lt;p&gt;Let’s go:&lt;/p&gt;
+
+\[\nabla_t T = \nabla_t (T^i_j e_i\otimes w^j)\\ 
+= (\nabla_t T^i_j) e_i\otimes w^j + T^i_j (\nabla_t e_i) \otimes w^j + T^i_j e_i\otimes (\nabla_t w^j)\]
+
+&lt;p&gt;Firs term is the covariant derivative of a scalar, so it’s just a directional derivative:&lt;/p&gt;
+
+\[\nabla_t T^i_j = \frac{\partial T^i_j}{\partial x^k} t_k = T^i_{j, k} \ t_k\]
+
+&lt;p&gt;The second term is the covariant derivative of a basis tangent vector, which we calculated in the second part of this article:&lt;/p&gt;
+
+\[\nabla_t e_i = \nabla_{e_k} e_i\  t_k = \Gamma^l_{ik} e_l\ t_k\]
+
+&lt;p&gt;And the third term has the covariant derivative of a covariant vector (or 0-1 tensor), and it was calculated in the fourth section:&lt;/p&gt;
+
+\[\nabla_t w^j = \nabla_{e_l} w^k\ t_l = -\Gamma_{lk}^j\ w^l\ t_k\]
+
+&lt;p&gt;Then putting it all together:&lt;/p&gt;
+
+\[\nabla_t T = T^i_{j, k} \ t_k\ (e_i\otimes w^j) + T^i_j\ \Gamma^l_{ik}\  (e_l\ \otimes w^j)\ t_k - T^i_j\ \Gamma_{lk}^j\ (e_i\otimes \ w^l)\ t_k\\
+=  t_k [T^i_{j,k} + T^l_j \Gamma^i_{kl} - T^i_l \Gamma^l_{kj}] (e_i\otimes w^j)\]
+
+&lt;p&gt;People would then write this omitting all the complexity like this:&lt;/p&gt;
+
+\[\nabla_t T = T^i_{j,k} + T^l_j \Gamma^i_{kl} - T^i_l \Gamma^l_{kj}\]
+
+&lt;p&gt;but this is &lt;em&gt;hopefully&lt;/em&gt; now an obvious omission of context and clear abuse of notation (which will keep us enraged until we dominate this material a little more.. perhaps…)&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Now that we know how to compute the covariant derivatives of all basis elements of both $V_x$ and $V_x^\ast$, we saw above that we have the power to compute it for 1-1 tensors using that magical basis ${e_i\otimes w^j}$&lt;/p&gt;
+
+&lt;p&gt;But we are actually capable of extending this result for any tensor rank possible… we just need to write this tensor in that magical basis, and apply the product rule over and over and over, until all the factors of the basis $e_1\otimes\dots\otimes e_n \otimes w^1 \otimes \dots \otimes w^n$ are taken care of.&lt;/p&gt;
+
+&lt;p&gt;I’m not going to write it here but you get the idea.&lt;/p&gt;
+
+&lt;p&gt;Calculating these beasts seams almost attainable now… perhaps one might even venture that it is “mechanic”… But the secret is that understanding of the layers hiding behind the process is trickier than advertised, so I hope this article helps demystify what is going on a little bit.&lt;/p&gt;
+
+&lt;p&gt;Maybe next time we could review some calculations of real tensors (like the metric tensor, or the Energy-Momentum tensor from Electromagnetics) to concretize what we have covered today! Let me know in the comments what you think.&lt;/p&gt;
+
+&lt;p&gt;Happy covariant-derivating!&lt;/p&gt;</content><author><name></name></author><category term="Physics" /><category term="Mathematics" /><summary type="html">Covariant derivatives are hard</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2021/12/24/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2021-12-24T22:32:28-08:00</published><updated>2021-12-24T22:32:28-08:00</updated><id>http://localhost:4000/jekyll/update/2021/12/24/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2021/12/24/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YEAR-MONTH-DAY-title.MARKUP&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YEAR&lt;/code&gt; is a four-digit number, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MONTH&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DAY&lt;/code&gt; are both two-digit numbers, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MARKUP&lt;/code&gt; is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">What the hell is a tensor anyways?</title><link href="http://localhost:4000/2021/12/22/what-the-hell-is-a-tensor-anyways.html" rel="alternate" type="text/html" title="What the hell is a tensor anyways?" /><published>2021-12-22T00:00:00-08:00</published><updated>2021-12-22T00:00:00-08:00</updated><id>http://localhost:4000/2021/12/22/what-the-hell-is-a-tensor-anyways</id><content type="html" xml:base="http://localhost:4000/2021/12/22/what-the-hell-is-a-tensor-anyways.html">&lt;h1 id=&quot;what-the-hell-is-a-tensor-anyways&quot;&gt;What the hell is a tensor anyways?&lt;/h1&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;As I’m studying more and more differential geometry and general relativity (and being the noob that I am), I have to go back to this definition over and over again, so I thought that writing it down for good can help me (and hopefully others) get a quick refresher into &lt;em&gt;what is a Tensor anyways&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;context-first&quot;&gt;Context first&lt;/h2&gt;
+
+&lt;p&gt;To get the definition going, we need to give some context first: We are on a manifold $M$, and for every point $p$ in this manifold we consider its tangent space $T_pM$ as the set of all tangent vectors on this point.&lt;/p&gt;
+
+&lt;p&gt;This is already tricky territory, because what we mean by “tangent vectors” is really directional derivatives that operate over smooth functions over the manifold. For example take a look at this definition of a &lt;em&gt;tangent vector&lt;/em&gt; sneakely defined inside the definition of a differentiable curve in $M$ from do Carmo’s book:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The &lt;em&gt;tangent vector to the curve&lt;/em&gt; $\alpha$ at $t=0$ is a function $\alpha’(0): \mathcal{D} \rightarrow \mathbb{R}$ given by&lt;/p&gt;
+
+\[\label{eq:tangent_def}
+\alpha'(0) f = \frac{d(f \circ \alpha)}{dt}\vert_{t=0}\]
+
+  &lt;p&gt;A &lt;em&gt;tangent vector at $p$&lt;/em&gt; is the tangent vector at $t=0$ of some curve $\alpha:(-\epsilon, \epsilon) \rightarrow M$ with $\alpha(0) = p$.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;*$\mathcal{D}$ is the set of all smooth functions $f$ over the manifold $M$.&lt;/p&gt;
+
+&lt;p&gt;If we flesh out this definition a little more by choosing a parametrization $x: U \rightarrow M$ at $p=x(0)$, we can express the function $f$ and the curve $\alpha$ in this parametrization by&lt;/p&gt;
+
+\[\nonumber f\circ x(q) = f(x_1, \dots, x_n),\ \ q = (x_1,\dots,x_n) \in U\]
+
+&lt;p&gt;and&lt;/p&gt;
+
+\[x^{-1}\circ\alpha(t) = (x_1(t), \dots, x_n(t)).\]
+
+&lt;p&gt;Therefore, restricting $f$ to $\alpha$, we can expand the definition of a tangent vector from above and obtain:&lt;/p&gt;
+
+\[\nonumber
+\alpha'(0) f = \frac{d(f \circ \alpha)}{dt}\vert_{t=0} = \frac{d}{dt} f(x_1(t),\dots,x_n(t))\vert_{t=0}\\
+= \sum\limits_{i=1}^{n} x_i'(0)(\frac{\partial f}{\partial x_i})\\
+= \left(\sum\limits_{i=1}^{n} x_i'(0)(\frac{\partial}{\partial x_i})_0\right) f\]
+
+&lt;p&gt;which we wrote purposefully to look like this whole thing is “acting” on the function $f$, kind of like a directional derivative! Right???!  (It totally &lt;strong&gt;is&lt;/strong&gt; a directional derivative when $M=\mathbb{R}^n$, but more on that some other time).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/doCarmo_tangent.jpg&quot; width=&quot;400&quot; title=&quot;basis tangent vector&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In other words, the vector $\alpha’(0)$ can be expressed in the parametrization $x$ by&lt;/p&gt;
+
+\[\alpha'(0) = \sum\limits_{i=1}^{n} x_i'(0)(\frac{\partial}{\partial x_i})_0\]
+
+&lt;p&gt;Note: As we saw above, the choice of a parametrization $x$ determines an &lt;em&gt;associated basis&lt;/em&gt; $\{ (\frac{\partial}{\partial x_1})_0, \dots, (\frac{\partial}{\partial x_n})_0\}$ in $T_pM$, but always remember that each of those basis elements are &lt;strong&gt;little derivatives!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Ok, fiuuuu! That was a lot, but there you have the definition of a tangent vector, and the set of all tangent vectors is called $T_pM$ or sometimes $V_p$ (which we will use in the following section). Alright. What else we need?&lt;/p&gt;
+
+&lt;p&gt;Well we need to define/understand the dual space to $V_p$ , typically referred to as  $V_p^*$. The dual space is the collection of linear maps over $V_p$ , i.e. functions&lt;/p&gt;
+
+&lt;p&gt;$f: V_p \rightarrow \mathbb{R}$ so that $f$ is linear.&lt;/p&gt;
+
+&lt;p&gt;This might sound like a complicated space, but actually is just as simple (or complex haha) as $V_p$, because if you remember from linear algebra, the only scalar linear functions over vectors are exactly transposed vectors! (like for example the function $w(v)$&lt;/p&gt;
+
+&lt;p&gt;\(w(v) = [w_1,\dots,w_n]
+    \left[
+        \begin{array}{c} 
+            v_1 \\ 
+            \dots \\ 
+            v_n 
+        \end{array} 
+    \right] \\\)
+\(= \sum\limits_i^n w_i v_i\))&lt;/p&gt;
+
+&lt;p&gt;So it shouldn’t be a surprise to hear that if for example $\{v_1,\dots,v_n\}$ is a basis of $V_p$, then $\{ v_1^\ast, \dots, v_n^\ast \}$ defined by&lt;/p&gt;
+
+\[\nonumber
+v_i^*(v_j) = \delta^i_j\]
+
+&lt;p&gt;is a basis for $V_p^\ast$! (just imagine the vector $v_i = [0,\dots, 1, \dots, 0]^T$ and its dual $ v_i^*=[0,\dots, 1, \dots, 0]$)&lt;/p&gt;
+
+&lt;p&gt;Ok, we have everything we need to define a tensor.&lt;/p&gt;
+
+&lt;h2 id=&quot;tensor-definition&quot;&gt;Tensor definition&lt;/h2&gt;
+
+&lt;p&gt;A tensor $T$ of type $(k,l)$ over $V_p$ is a multilinear map&lt;/p&gt;
+
+\[T: \underbrace{V_p^*\times\dots \times V_p^*}_{k \text{ times}} \times \underbrace{ V_p\times\dots\times V_p}_{l\text{ times}} \rightarrow \mathbb{R}\]
+
+&lt;p&gt;i.e. given $k$ dual vectors and $l$ ordinary vectors, $T$ produces a real number!&lt;/p&gt;
+
+&lt;p&gt;For example, lets consider a 1-1 tensor $T: V_p^* \times V_p \rightarrow \mathbb{R}$, one dual vector $w\in V_p^*$,  and one ordinary vector $v\in V_p$ , then $T(w,v)$ is a scalar.&lt;/p&gt;
+
+&lt;p&gt;But this is way too abstract! To put things concretely we can write T using its “action” on the basis elements of $V_p$ and $V_p^*$ because it is a multilinear map. For example, let’s use the basis for $V_p$ that we described in the context section $\{(\frac{\partial}{\partial x_1})_0, \dots, (\frac{\partial}{\partial x_n})_0\}$, but rename it a bit for ease of reading and manipulation, say&lt;/p&gt;
+
+\[e_i := \frac{\partial }{\partial x_i}\]
+
+&lt;p&gt;so that we have a basis of vectors $\{e_1,\dots,e_n\}$, and their dual vectors $\{w^1,\dots,w^n\}$ , defined so that $w^i(e_j) = \delta^i_j$.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Notice that we are putting the index “i” on the bottom for tangent vectors, and on the top for dual vectors to differentiate them.&lt;/p&gt;
+
+  &lt;p&gt;THIS IS IMPORTANT AND A HUGE SOURCE OF CONFUSION SOMETIMES #physicistscryinginthelibrary&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So lets get applying T to these basis elements, for example the first elements: $T(w^1,e_1)$. This is a scalar, and lets call it&lt;/p&gt;
+
+\[\nonumber T^1_1 := T(w^1,e_1)\]
+
+&lt;p&gt;The same thing can be done with any pair $(w^i,\ e_j)$, so that we can describe T by the components&lt;/p&gt;
+
+\[\nonumber T^i_j := T(w^i, e_j)\]
+
+&lt;p&gt;This is going to be the typical way in which we will compute things with tensors; In their “components” or “coordinate” form, coefficients of an otherwise multilinear functional (sometimes to absurd levels like  $T^{\alpha i j k\gamma}_{l s \beta}$ )&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Hopefully this article would be a good reference to anyone (me in particular lol) for whenever the concept of “Tensor” gets confusing and we need a refresher.&lt;/p&gt;
+
+&lt;p&gt;We went over the basic definitions required to be able to define what is a Tensor. We learned about &lt;em&gt;tangent vectors&lt;/em&gt;, the tangent space $T_pM$ (or $V_p$), its dual space $V_p^\ast$ and its inhabitants the &lt;em&gt;dual vectors&lt;/em&gt;, and finally we defined what a Tensor is and how to describe it with a given set of coordinates.&lt;/p&gt;
+
+&lt;p&gt;So with all this in mind answer me this:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Is a vector … a tensor?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I’ll leave you to think about it, but the answer is in the comments.&lt;/p&gt;</content><author><name></name></author><category term="Physics" /><category term="Mathematics" /><summary type="html">What the hell is a tensor anyways?</summary></entry><entry><title type="html">Feynman’s proof of the Maxwell equations</title><link href="http://localhost:4000/2020/06/01/feynman-maxwell-equations.html" rel="alternate" type="text/html" title="Feynman’s proof of the Maxwell equations" /><published>2020-06-01T00:00:00-07:00</published><updated>2020-06-01T00:00:00-07:00</updated><id>http://localhost:4000/2020/06/01/feynman-maxwell-equations</id><content type="html" xml:base="http://localhost:4000/2020/06/01/feynman-maxwell-equations.html">&lt;h1 id=&quot;feynmans-proof-of-the-maxwell-equations&quot;&gt;Feynman’s proof of the Maxwell equations&lt;/h1&gt;
+
+&lt;p&gt;A few weeks ago, &lt;a href=&quot;https://en.wikipedia.org/wiki/Freeman_Dyson&quot;&gt;Freeman Dyson&lt;/a&gt;, a renowned professor from the Institute for Advanced Study in Princeton, passed away. He was a very curious physicist, with many interests and wild thought experiments (see Dyson sphere). He was also a student of Feynman, and in October 1948, Feynman showed him a proof of Maxwell equations, assuming only Newton’s law of motion and the commutation relation between position and velocity for a single nonrelativistic particle.&lt;/p&gt;
+
+&lt;p&gt;I know, weird huh?&lt;/p&gt;
+
+&lt;p&gt;This curious paper was published in (&lt;a href=&quot;https://aapt.scitation.org/doi/10.1119/1.16188&quot;&gt;Am. J. Phys. 58 (3), March 1990&lt;/a&gt;), and then brought to my attention by this awesome paper subscription service, &lt;a href=&quot;https://fermatslibrary.com/&quot;&gt;Fermat’s Library&lt;/a&gt;, that was celebrating Dyson’s life.&lt;/p&gt;
+
+&lt;p&gt;For a math-physics enthusiast, this is a hardcore click-bait title. So I dived in. If you are curious, please see the paper &lt;a href=&quot;https://fermatslibrary.com/s/feynmans-proof-of-the-maxwell-equations&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The algebra is simple enough, and one might think to understand it right away. Classic Feynman argumentation. The reality is that, after a little bit of probing my own understanding, I realized that nothing was really clear! My brain always tried to trick me like this, but I’ve learned this lesson many times. I do not know anything until I can explain all the details clearly. And trust me, the devil is always in the details.&lt;/p&gt;
+
+&lt;p&gt;Take for example the first argument line in 1D: Assume a particle exists with position $x$ and velocity $\dot{x}$ satisfying Newton’s equation&lt;/p&gt;
+
+\[m\ddot{x} = F(x,\dot{x},t)\]
+
+&lt;p&gt;with commutation relations $[x, x] = 0,$ $m[x, \dot{x}] = i\hbar$.&lt;/p&gt;
+
+&lt;p&gt;“Sure” you might say, “seems reasonable” since we have all seen these commutation relations before… Really though? What is the commutator of $x$ and $\dot{x}$? What is the product $x\dot{x}$? Is that multiplication?&lt;/p&gt;
+
+&lt;p&gt;What is $x(t)$ itself? Is it really just a scalar function of time that gives you the position of the particle? What about $\dot{x}(t)$?&lt;/p&gt;
+
+&lt;p&gt;I hope you see where I’m going here. If they are truly scalars, then both of the above commutation relations would be zero, because multiplication is commutative. But no, something is not being stated… They can’t possible be scalars, and so what is the meaning of Newton’s equation above?&lt;/p&gt;
+
+&lt;p&gt;Let’s try to figure it out.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-roles-of-x-and-p&quot;&gt;The roles of $x$ and $p$&lt;/h2&gt;
+
+&lt;p&gt;Lets start by recognizing that the second commutation relation looks like the commutator of $[x,p]$ from Quantum Mechanics, but it is somehow assumed that $m\dot{x} = p$. Is that true? I mean it is certainly true when we are talking about scalars, but at the same time scalars commute, so… what’s the dealio my friends?&lt;/p&gt;
+
+&lt;p&gt;For the sake of this discussion, lets start with just considering $x$ and $p$. &lt;em&gt;Future Gustavo&lt;/em&gt; can figure out why is $m\dot{x} = p$ later.&lt;/p&gt;
+
+&lt;p&gt;We recognized above that $x$ and $p$ cannot be scalars in the typical sense, otherwise the commutator would be 0. Therefore we need to consider them for what they truly are: Operators.&lt;/p&gt;
+
+&lt;h3 id=&quot;operators&quot;&gt;Operators&lt;/h3&gt;
+
+&lt;p&gt;In Quantum Mechanics, the state of a system is described by a wave function $\psi(t)$.&lt;/p&gt;
+
+&lt;p&gt;When we try to observe some physical quantity $\mathcal{A}$ of the system, like its position or momentum, there exists an associated linear operator to that quantity $\hat{\mathcal{A}}$. The eigenvalues of $\hat{\mathcal{A}}$ correspond to the possible values that the physical quantity can take.&lt;/p&gt;
+
+&lt;p&gt;In the case of $\bf x(t)$, the paper is ambiguous as to which are we referring to, the physical quantity, or the operator that acts on a wave function $\psi$. Mathematically, it requires a little bit of formalism to understand how it works when applied to an arbitrary state $\psi$, but intuitively it suffices to say that the operator $\bf x(t)$ measures the position of the particle at time $t$.&lt;/p&gt;
+
+&lt;p&gt;So, if $\psi(x)$ is the wave function when the particle is in position “$x$”, then&lt;/p&gt;
+
+\[\hat{\bf x} \psi(x) = x\psi(x)\]
+
+&lt;p&gt;where on the right side, the “$x$” is now a scalar multiplying the function $\psi(x)$. Operator on the left, scalar on the right.&lt;/p&gt;
+
+&lt;p&gt;What is $\bf p$ then?&lt;/p&gt;
+
+&lt;p&gt;$\bf{p}$ is the operator that represents a measurement of the momentum of a particle, but unlike $\bf x$, the associated operator analogue $\hat{\bf p}$ is easier to understand without heavy formalism. Yay!&lt;/p&gt;
+
+&lt;p&gt;Given the wave like nature of the Schroedinger equation, it is an illustrative example to think of a plane wave to understand $p$. For a plane wave (representing perhaps a photon of a given frequency $\omega$), the wave function takes a simple form,
+\(\psi(t,x) = e^{i({k x} - \omega t)}\)&lt;/p&gt;
+
+&lt;p&gt;with the photon’s momentum given by $p = k\hbar$. Notice that for this example, it is easy to see that in order to recover the momentum of the plane wave, it’s enough to take the derivative and multiply by $\frac{\hbar}{i}$:
+\(\frac{\hbar}{i}\frac{\partial}{\partial x}\psi = \frac{\hbar}{i}ik e^{i({kx} - \omega t)} = k\hbar\ e^{i({k x} - \omega t)}= p\ \psi(t,x)\)&lt;/p&gt;
+
+&lt;p&gt;So as a first intuition, one might consider the momentum operator acting on a wave function $\psi$ as
+\(\hat{\bf p}\ \psi = \frac{\hbar}{i}\frac{\partial}{\partial x} \psi\)&lt;/p&gt;
+
+&lt;p&gt;For now, we will assume the form above for all wave functions, but you can see the notes at the end of the article for more details on a general case (instead of just a plane wave).&lt;/p&gt;
+
+&lt;h3 id=&quot;the-proper-proof-of-the-commutation-relation&quot;&gt;The proper proof of the commutation relation&lt;/h3&gt;
+
+&lt;p&gt;So now we have a proper description of both operators $\hat{\bf x}$ and $\hat{\bf p}$, and we can identify the commutator applied to a wave function $\psi$:&lt;/p&gt;
+
+&lt;p&gt;\(\left[\hat{x},\hat{p}\right]\psi = \hat{x}\hat{p}\psi - \hat{p}\hat{x}\psi\)
+\(= x\frac{\hbar}{i}\frac{\partial}{\partial x}\psi - \frac{\hbar}{i}\frac{\partial}{\partial x} (x\psi)\)
+\(= \frac{\hbar}{i}\left( x\frac{\partial \psi}{\partial x} - \psi - x\frac{\partial \psi}{\partial x}\right)\)
+\(= -\frac{\hbar}{i}\psi\)&lt;/p&gt;
+
+&lt;p&gt;where we used in the third line the derivative of the product rule, and that the derivative of $x$ is 1. So we can write that, as operators, $\hat{\bf x}$ and $\hat{\bf p}$ do not commute, and instead,
+\([\hat{\bf x}, \hat{\bf p}] = - \frac{\hbar}{i} = i\hbar\)&lt;/p&gt;
+
+&lt;h2 id=&quot;the-evolution-of-a-time-dependent-operator&quot;&gt;The evolution of a time dependent operator&lt;/h2&gt;
+
+&lt;p&gt;Remember above when I delegated the responsibility of explaining why $m\dot{x} = p$ to &lt;em&gt;future Gustavo&lt;/em&gt;? Well, the future is here. sigh. Time to clarify what is the relationship between $p$ and $\dot{x}$ as operators.&lt;/p&gt;
+
+&lt;p&gt;We’ll start with $\dot{x}$ – Typically, the dot signifies a time derivative. A time derivative of the position operator?But time derivatives are for functions that change in time…. soooo… how?&lt;/p&gt;
+
+&lt;p&gt;Ok, let’s start with exploring something simpler, like the evolution of a quantum system in time:&lt;/p&gt;
+
+&lt;h4 id=&quot;the-evolution-operator&quot;&gt;The Evolution Operator&lt;/h4&gt;
+
+&lt;p&gt;Think of the evolution of an un-observed quantum system described by a wave function $\psi(t)$, that at some initial time started at a state $\psi(t_0)$.&lt;/p&gt;
+
+&lt;p&gt;We can therefore define an &lt;em&gt;Evolution Operator&lt;/em&gt; $U(t,t_0)$ such that&lt;/p&gt;
+
+\[|\psi(t)&amp;gt;\ = U(t,t_0)\ |\psi(t_0)&amp;gt;\]
+
+&lt;p&gt;as basically the operator that advances the state of a quantum system in time. We are interested in knowing how does this operator evolve in time, namely $\frac{d}{dt}U(t,t_0)$.&lt;/p&gt;
+
+&lt;p&gt;I’m not sure if it’s better to explain why now, to motivate it, or if if should just find the derivative, and then use it… Let’s motivate it first!&lt;/p&gt;
+
+&lt;h4 id=&quot;time-derivative-of-a-quantum-operator&quot;&gt;Time derivative of a quantum operator&lt;/h4&gt;
+
+&lt;p&gt;To calculate the derivative of an operator, we need to compute it as a limit,&lt;/p&gt;
+
+\[\frac{d}{dt} \hat{x}(t) = \lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon}(\hat{x}(t+\epsilon) - \hat{x}(t)),\]
+
+&lt;p&gt;meaning that we should apply the operator $\hat{x}(t+\epsilon)$ to a wave function $\psi$ and also apply the operator $\hat{x}(t)$ to the same wave function $\psi$, then subtract and divide by $\epsilon$.&lt;/p&gt;
+
+&lt;p&gt;But you see what I’m doing there? I’m hiding things because $\psi$ is a function that depends on time as well, and the operators $\hat{x}(t)$ and $\hat{x}(t+\epsilon)$ can’t act on the function $\psi$ at the same time $t$, since we need to remember that $\hat{x}$ is the operator that when you apply it to a quantum state, it should give you the collapsed &lt;em&gt;position&lt;/em&gt; of the particle whose evolution is being described by the probability density $\psi$. Therefore $\hat{x}(t+\epsilon)$ is asking for a measurement of the position of a particle at time $t+\epsilon$, and $\hat{x}(t)$ a measurement at time $t$.&lt;/p&gt;
+
+&lt;p&gt;Does that makes sense? You can’t just mix the two operators. We need to include something else. This is where the &lt;strong&gt;Evolution Operator&lt;/strong&gt; comes into play. Consider as well the inverse of $U$, $U^\dagger(t,t_0)$ so that&lt;/p&gt;
+
+\[U^\dagger(t,t_0) U(t,t_0) = I\]
+
+&lt;p&gt;Intuitively, applying the operator $U^\dagger(t,t_0)$ is like taking a quantum state at time $t$, and looking back in time to $t_0$. The benefit of this is that we can now define properly the application of the position operator at two different times $t+\epsilon$ and $t$.&lt;/p&gt;
+
+&lt;p&gt;For example, to sample $\hat{x}(t+\epsilon)$, first evolve the state of the initial quantum system to the time $t+\epsilon$, by applying $U(t+\epsilon,t_0)$:
+\(|\psi(t+\epsilon)&amp;gt; = U(t+\epsilon,t_0) |\psi(t_0)&amp;gt;.\)&lt;/p&gt;
+
+&lt;p&gt;Now we can apply the position operator $\bf \hat{x}$ to this state to get the position at time $t+\epsilon$, and then revert back to the time independent state $\psi(t_0)$ by applying the inverse $U^\dagger(t+\epsilon,t_0)$:&lt;/p&gt;
+
+\[U^\dagger(t+\epsilon, t_0)\ {\bf \hat{x}}\ U(t+\epsilon, t_0) |\psi(t_0)&amp;gt;\]
+
+&lt;p&gt;The result of this operation would be a scalar for the position $x(t+\epsilon)$ for the collapsed wave function at that position. Equivalently, to get the position at time $t$, all we have to do is compute:
+\(U^\dagger(t,t_0)\ {\bf \hat{x}} \ U(t, t_0) |\psi(t_0)&amp;gt;.\)&lt;/p&gt;
+
+&lt;p&gt;Putting things together we obtain that the derivative of $x$ is&lt;/p&gt;
+
+&lt;p&gt;\(\lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t)) \psi = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} (U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0)\)
+\(- U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)) \psi(t_0)\)&lt;/p&gt;
+
+&lt;p&gt;Let’s use the classic trick of adding and subtracting an intermediary term: $U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)$,&lt;/p&gt;
+
+&lt;p&gt;\(\lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t)) = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} [U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) - U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)\)
+\(+ U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0) - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)]\)&lt;/p&gt;
+
+&lt;p&gt;\(= \lim\limits_{\epsilon\rightarrow 0}(\frac{U^\dagger(t+\epsilon,t_0) - U^\dagger(t,t_0)}{\epsilon})\ \hat{x}\ U(t+\epsilon,t_0)\)
+\(+ \lim\limits_{\epsilon\rightarrow 0}U^\dagger(t,t_0)\ \hat{x}\ (\frac{U(t+\epsilon,t_0) - U(t,t_0)}{\epsilon})\)&lt;/p&gt;
+
+&lt;p&gt;So we recognize the following identity for the evolution of the operator $\hat{x}$:&lt;/p&gt;
+
+\[\frac{d}{dt}\hat{x}(t) = \frac{dU^\dagger}{dt}(t,t_0)\ \hat{x}\ U(t,t_0) + U^\dagger(t,t_0)\ \hat{x}\ \frac{dU}{dt}(t,t_0)\]
+
+&lt;h4 id=&quot;evolution-of-the-evolution-operator-utt_0&quot;&gt;Evolution of the Evolution operator $U(t,t_0)$&lt;/h4&gt;
+
+&lt;p&gt;The evolution of an unobserved quantum system is described by the Hamiltonian, so we must find a relationship between $U(t,t_0)$ and $H(t)$. Lets provide the intuition.&lt;/p&gt;
+
+&lt;p&gt;Since the eigenvectors of $H$ form a basis for the function space of possible wave functions $\psi(t)$, we can determine $U(t,t_0)$ by computing its effects on each eigenvector. If for example $u_E(t_0)$ is the eigenvector associated with the eigenvalue $E$, then,&lt;/p&gt;
+
+\[\hat{H}\ |u_E(t_0)&amp;gt;\ =  E\ |u_E(t_0)&amp;gt;\]
+
+&lt;p&gt;Therefore, since the evolution of a system is given by Schroedinger equation, i.e.&lt;/p&gt;
+
+\[i\hbar\frac{d}{dt} u_E(t) = \hat{H}\ u_E(t) = E\ u_E(t)\]
+
+&lt;p&gt;we obtain that $u_E$​ satisfies a simple 1D differential equation. Then&lt;/p&gt;
+
+\[|u_E(t)&amp;gt; = e^{-i\omega(t-t_0)}|u_E(t_0)&amp;gt; = e^{-\frac{iE}{\hbar}(t-t_0)}|u_E(t_0)&amp;gt;,\]
+
+&lt;p&gt;where the last equality follows from $E= \hbar\omega$. Looking at that equation, we can recognize what is the “factor” (&lt;em&gt;double entendre&lt;/em&gt;, get it?) that evolves $u_E(t_0)$ to $u_E(t)$: $e^{-\frac{iE}{\hbar}(t-t_0)}$, so a good a priory guess for $U(t,t_0)$ is,&lt;/p&gt;
+
+\[U(t,t_0) = e^{-i\frac{E}{\hbar}(t,t_0)}\]
+
+&lt;p&gt;since then, $u_E(t) = U(t,t_0) u_E(t_0)$ . Equivalently, one might define more generally $U(t,t_0)$ by looking at the Schroedinger equation re-written in terms of $U$:&lt;/p&gt;
+
+\[i\hbar\frac{d}{dt} \psi(t) = H\ \psi(t)\]
+
+\[i\hbar \frac{d}{dt} U(t,t_0)\psi(t_0) = H\ U(t,t_0) \psi(t_0)\]
+
+\[\Rightarrow \left[i\hbar \frac{d}{dt}U(t,t_0) - H\ U(t,t_0)\right]\psi(t_0) = 0\]
+
+&lt;p&gt;Where in the last line we recognize the functional equation:&lt;/p&gt;
+
+\[i\hbar \frac{d}{dt}U(t,t_0) = H\ U(t,t_0)\]
+
+&lt;p&gt;which is an equality of operators.&lt;/p&gt;
+
+&lt;h4 id=&quot;putting-things-together&quot;&gt;Putting things together&lt;/h4&gt;
+
+&lt;p&gt;Going back to identity for the evolution operator, and replacing this last equality of operators, we obtain that,&lt;/p&gt;
+
+\[\frac{d}{dt}\hat{x}(t) = - \frac{1}{i\hbar}U^\dagger(t,t_0) H^\dagger \hat{x}\ U(t,t_0) + U^\dagger(t,t_0)\ \hat{x}\ \frac{1}{i\hbar}H\ U(t,t_0)\]
+
+\[= \frac{1}{i\hbar}(-U^\dagger H {\color{red}UU^\dagger} \hat{x}\ U + U^\dagger\ \hat{x}\ {\color{red}UU^\dagger} H\ U)\]
+
+\[= \frac{1}{i\hbar}[U^\dagger \hat{x} U, U^\dagger H U]\]
+
+\[= \frac{1}{i\hbar}[x(t), H(t)]\]
+
+\[= \frac{\partial H}{\partial p_x}\]
+
+&lt;p&gt;Where we used that $H$ is Hermitian ( $H^\dagger = H$ ), a “multiplying by the identity” trick (in red), and the definition of the commutator to put things in the brackets. The last two lines are key, because we are using that the operators $U^\dagger H U$ and $U^\dagger \hat{x} U$ are just the time independent versions of $H(t),\ x(t)$, so we can reduce them back, and finally use the known commutator properties to get the last line.&lt;/p&gt;
+
+&lt;p&gt;Finally, to take the derivative of $H$ with respect to $p$, we will use the Hamiltonian for a particle under a potential $V(x)$,&lt;/p&gt;
+
+\[H = \frac{\hat{p}^2}{2m} + \hat{V}(x)\]
+
+&lt;p&gt;Then,&lt;/p&gt;
+
+\[\frac{d\hat{x}}{dt} = \frac{\hat{p}_x}{m}\]
+
+&lt;p&gt;which is exactly what we wanted, but we proved it &lt;strong&gt;as operators!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+
+&lt;p&gt;Freeman Dyson published Feynman’s argument to derive Maxwell’s equations from Newton’s equation and the basic commutation relations:&lt;/p&gt;
+
+\[m\ddot{x} = F(t,x,\dot{x}),\ \text{ and }\ [x,x] = 0,\ m[x,\dot{x}] = i\hbar\]
+
+&lt;p&gt;These assumptions look simple and familiar, but hidden behind them are the profound fundamentals of Quantum Mechanics, and how it differs from Classical Mechanics.&lt;/p&gt;
+
+&lt;p&gt;How very tricky of Feynman to hide all the mathematical details to get on with calculating! I can imagine Dyson complaining to Feynman about rigor while Feynman, smiling, would shake his arms and head, impatiently following his [correct] intuition. This image, that may very well be false, makes me smile.&lt;/p&gt;
+
+&lt;p&gt;As we learned in this article, there is actually nothing wrong with this “intuitive” approach. All their claims were correct if you understood the context in which they were being discussed, so we can forgive Dyson and Feynman for their wonderfully creative disregard for rigorous mathematics! Specially since you know… they are masters of the subject.&lt;/p&gt;
+
+&lt;p&gt;There is a lot of other interesting aspects of this paper that I could write about, but I’ll leave you with this: The approach of the paper is actually incorrect. It’s missing something important as brought up by multiple editorial comments and by Dyson himself:&lt;/p&gt;
+
+&lt;p&gt;“&lt;em&gt;The Maxwell equations are relativistically invariant, while the Newtonian assumptions, which Feynman used for his proof, are nonrelativistic. The proof begins with assumptions invariant under Galilean transformations and ends with equations invariant under Lorentz transformations. How could this have happened? After all, it was the incompatibility between Galilean mechanics and Maxwell electrodynamics that led Einstein to special relativity in 1905. Yet here we find Galilean mechanics and Maxwell equations coexisting peacefully. Perhaps it was lucky that Einstein had not seen Feynman’s proof when he started to think about relativity&lt;/em&gt;.”&lt;/p&gt;
+
+&lt;p&gt;So if this derivation is wrong because it started with nonrelativistic equations, what happens if we start, instead of with Newton’s second law, with Dirac’s equation?&lt;/p&gt;
+
+\[E^2 = m^2c^4 + p^2c^2\]
+
+&lt;p&gt;I’m sure it would be super cool to try it.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;notes&quot;&gt;Notes&lt;/h4&gt;
+
+&lt;h5 id=&quot;general-proof-of-hatp--frachbarifracpartialpartial-x&quot;&gt;General proof of $\hat{p} = \frac{\hbar}{i}\frac{\partial}{\partial x}$&lt;/h5&gt;
+
+&lt;p&gt;Any wave function can be written as a sum of plane waves (since these are a basis of the space of wave functions):&lt;/p&gt;
+
+\[\psi(x) = \frac{1}{(2\pi\hbar)^{\frac{3}{2}}} \int\limits_{\mathbb{R}^3} \Phi(p) e^{ik\cdot x} dp\]
+
+&lt;p&gt;where $\Phi(p)$ is the Fourier transform of $\psi$, so in the general case it is also true that the momentum operator acts like a derivative:
+\(\frac{\hbar}{i}\frac{\partial}{\partial x}\psi = \frac{\hbar}{i}\frac{\partial}{\partial x}\left[\frac{1}{(2\pi\hbar)^{\frac{1}{2}}} \int\limits_{\mathbb{R}} \Phi(p) e^{ik\cdot x} dp\right]\)
+\(= \frac{\hbar}{i}\frac{1}{(2\pi\hbar)^{\frac{1}{2}}} \int\limits_{\mathbb{R}} \Phi(p) \frac{\partial}{\partial x} e^{ik\cdot x} dp\)
+\(= \frac{ik\hbar}{i}\left[\frac{1}{(2\pi\hbar)^{\frac{1}{2}}} \int\limits_{\mathbb{R}} \Phi(p) e^{ik\cdot x} dp\right]\\= k\hbar\ \psi\)
+\(= p\ \psi\)&lt;/p&gt;
+
+&lt;p&gt;The derivative goes inside the integral, because the only thing dependent on $x$ is the exponential function, but that one doesn’t change after the derivative, except for the coefficients $ik$, which we pull back outside the integral. We recognize then that $p=k\hbar$ to finish out the proof.&lt;/p&gt;</content><author><name></name></author><category term="Physics" /><summary type="html">Feynman’s proof of the Maxwell equations</summary></entry></feed>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-mml-chtml.js">
+    </script>-->
+    <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+    </script>
+    <script
+  type="text/javascript"
+  charset="utf-8"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <script
+  type="text/javascript"
+  charset="utf-8"
+  src="https://vincenttam.github.io/javascripts/MathJaxLocal.js">
+    </script>
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Feynman’s proof of the Maxwell equations | Gustavo’s site</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Feynman’s proof of the Maxwell equations" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Feynman’s proof of the Maxwell equations" />
+<meta property="og:description" content="Feynman’s proof of the Maxwell equations" />
+<link rel="canonical" href="http://localhost:4000/2020/06/01/feynman-maxwell-equations.html" />
+<meta property="og:url" content="http://localhost:4000/2020/06/01/feynman-maxwell-equations.html" />
+<meta property="og:site_name" content="Gustavo’s site" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-01T00:00:00-07:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Feynman’s proof of the Maxwell equations" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/img_4029.jpg"}},"datePublished":"2020-06-01T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2020/06/01/feynman-maxwell-equations.html"},"url":"http://localhost:4000/2020/06/01/feynman-maxwell-equations.html","description":"Feynman’s proof of the Maxwell equations","headline":"Feynman’s proof of the Maxwell equations","dateModified":"2020-06-01T00:00:00-07:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e81bb993b82f98541e3a0491c62a5e9754f69be3">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="http://localhost:4000/">Gustavo's site</a></h1>
+
+        
+          <img src="/assets/img/img_4029.jpg" alt="Logo" />
+        
+
+        <p>A compilation of my personal projects</p>
+
+        
+        <p class="view"><a href="https://github.com/aramisentreri/aramisentreri.github.io">View the Project on GitHub <small>aramisentreri/aramisentreri.github.io</small></a></p>
+        
+
+        
+
+        
+      </header>
+      <section>
+
+      <h1 id="feynmans-proof-of-the-maxwell-equations">Feynman’s proof of the Maxwell equations</h1>
+
+<p>A few weeks ago, <a href="https://en.wikipedia.org/wiki/Freeman_Dyson">Freeman Dyson</a>, a renowned professor from the Institute for Advanced Study in Princeton, passed away. He was a very curious physicist, with many interests and wild thought experiments (see Dyson sphere). He was also a student of Feynman, and in October 1948, Feynman showed him a proof of Maxwell equations, assuming only Newton’s law of motion and the commutation relation between position and velocity for a single nonrelativistic particle.</p>
+
+<p>I know, weird huh?</p>
+
+<p>This curious paper was published in (<a href="https://aapt.scitation.org/doi/10.1119/1.16188">Am. J. Phys. 58 (3), March 1990</a>), and then brought to my attention by this awesome paper subscription service, <a href="https://fermatslibrary.com/">Fermat’s Library</a>, that was celebrating Dyson’s life.</p>
+
+<p>For a math-physics enthusiast, this is a hardcore click-bait title. So I dived in. If you are curious, please see the paper <a href="https://fermatslibrary.com/s/feynmans-proof-of-the-maxwell-equations">here</a>.</p>
+
+<p>The algebra is simple enough, and one might think to understand it right away. Classic Feynman argumentation. The reality is that, after a little bit of probing my own understanding, I realized that nothing was really clear! My brain always tried to trick me like this, but I’ve learned this lesson many times. I do not know anything until I can explain all the details clearly. And trust me, the devil is always in the details.</p>
+
+<p>Take for example the first argument line in 1D: Assume a particle exists with position $x$ and velocity $\dot{x}$ satisfying Newton’s equation</p>
+
+\[m\ddot{x} = F(x,\dot{x},t)\]
+
+<p>with commutation relations $[x, x] = 0,$ $m[x, \dot{x}] = i\hbar$.</p>
+
+<p>“Sure” you might say, “seems reasonable” since we have all seen these commutation relations before… Really though? What is the commutator of $x$ and $\dot{x}$? What is the product $x\dot{x}$? Is that multiplication?</p>
+
+<p>What is $x(t)$ itself? Is it really just a scalar function of time that gives you the position of the particle? What about $\dot{x}(t)$?</p>
+
+<p>I hope you see where I’m going here. If they are truly scalars, then both of the above commutation relations would be zero, because multiplication is commutative. But no, something is not being stated… They can’t possible be scalars, and so what is the meaning of Newton’s equation above?</p>
+
+<p>Let’s try to figure it out.</p>
+
+<h2 id="the-roles-of-x-and-p">The roles of $x$ and $p$</h2>
+
+<p>Lets start by recognizing that the second commutation relation looks like the commutator of $[x,p]$ from Quantum Mechanics, but it is somehow assumed that $m\dot{x} = p$. Is that true? I mean it is certainly true when we are talking about scalars, but at the same time scalars commute, so… what’s the dealio my friends?</p>
+
+<p>For the sake of this discussion, lets start with just considering $x$ and $p$. <em>Future Gustavo</em> can figure out why is $m\dot{x} = p$ later.</p>
+
+<p>We recognized above that $x$ and $p$ cannot be scalars in the typical sense, otherwise the commutator would be 0. Therefore we need to consider them for what they truly are: Operators.</p>
+
+<h3 id="operators">Operators</h3>
+
+<p>In Quantum Mechanics, the state of a system is described by a wave function $\psi(t)$.</p>
+
+<p>When we try to observe some physical quantity $\mathcal{A}$ of the system, like its position or momentum, there exists an associated linear operator to that quantity $\hat{\mathcal{A}}$. The eigenvalues of $\hat{\mathcal{A}}$ correspond to the possible values that the physical quantity can take.</p>
+
+<p>In the case of $\bf x(t)$, the paper is ambiguous as to which are we referring to, the physical quantity, or the operator that acts on a wave function $\psi$. Mathematically, it requires a little bit of formalism to understand how it works when applied to an arbitrary state $\psi$, but intuitively it suffices to say that the operator $\bf x(t)$ measures the position of the particle at time $t$.</p>
+
+<p>So, if $\psi(x)$ is the wave function when the particle is in position “$x$”, then</p>
+
+\[\hat{\bf x} \psi(x) = x\psi(x)\]
+
+<p>where on the right side, the “$x$” is now a scalar multiplying the function $\psi(x)$. Operator on the left, scalar on the right.</p>
+
+<p>What is $\bf p$ then?</p>
+
+<p>$\bf{p}$ is the operator that represents a measurement of the momentum of a particle, but unlike $\bf x$, the associated operator analogue $\hat{\bf p}$ is easier to understand without heavy formalism. Yay!</p>
+
+<p>Given the wave like nature of the Schroedinger equation, it is an illustrative example to think of a plane wave to understand $p$. For a plane wave (representing perhaps a photon of a given frequency $\omega$), the wave function takes a simple form,
+\(\psi(t,x) = e^{i({k x} - \omega t)}\)</p>
+
+<p>with the photon’s momentum given by $p = k\hbar$. Notice that for this example, it is easy to see that in order to recover the momentum of the plane wave, it’s enough to take the derivative and multiply by $\frac{\hbar}{i}$:
+\(\frac{\hbar}{i}\frac{\partial}{\partial x}\psi = \frac{\hbar}{i}ik e^{i({kx} - \omega t)} = k\hbar\ e^{i({k x} - \omega t)}= p\ \psi(t,x)\)</p>
+
+<p>So as a first intuition, one might consider the momentum operator acting on a wave function $\psi$ as
+\(\hat{\bf p}\ \psi = \frac{\hbar}{i}\frac{\partial}{\partial x} \psi\)</p>
+
+<p>For now, we will assume the form above for all wave functions, but you can see the notes at the end of the article for more details on a general case (instead of just a plane wave).</p>
+
+<h3 id="the-proper-proof-of-the-commutation-relation">The proper proof of the commutation relation</h3>
+
+<p>So now we have a proper description of both operators $\hat{\bf x}$ and $\hat{\bf p}$, and we can identify the commutator applied to a wave function $\psi$:</p>
+
+<p>\(\left[\hat{x},\hat{p}\right]\psi = \hat{x}\hat{p}\psi - \hat{p}\hat{x}\psi\)
+\(= x\frac{\hbar}{i}\frac{\partial}{\partial x}\psi - \frac{\hbar}{i}\frac{\partial}{\partial x} (x\psi)\)
+\(= \frac{\hbar}{i}\left( x\frac{\partial \psi}{\partial x} - \psi - x\frac{\partial \psi}{\partial x}\right)\)
+\(= -\frac{\hbar}{i}\psi\)</p>
+
+<p>where we used in the third line the derivative of the product rule, and that the derivative of $x$ is 1. So we can write that, as operators, $\hat{\bf x}$ and $\hat{\bf p}$ do not commute, and instead,
+\([\hat{\bf x}, \hat{\bf p}] = - \frac{\hbar}{i} = i\hbar\)</p>
+
+<h2 id="the-evolution-of-a-time-dependent-operator">The evolution of a time dependent operator</h2>
+
+<p>Remember above when I delegated the responsibility of explaining why $m\dot{x} = p$ to <em>future Gustavo</em>? Well, the future is here. sigh. Time to clarify what is the relationship between $p$ and $\dot{x}$ as operators.</p>
+
+<p>We’ll start with $\dot{x}$ – Typically, the dot signifies a time derivative. A time derivative of the position operator?But time derivatives are for functions that change in time…. soooo… how?</p>
+
+<p>Ok, let’s start with exploring something simpler, like the evolution of a quantum system in time:</p>
+
+<h4 id="the-evolution-operator">The Evolution Operator</h4>
+
+<p>Think of the evolution of an un-observed quantum system described by a wave function $\psi(t)$, that at some initial time started at a state $\psi(t_0)$.</p>
+
+<p>We can therefore define an <em>Evolution Operator</em> $U(t,t_0)$ such that</p>
+
+\[|\psi(t)&gt;\ = U(t,t_0)\ |\psi(t_0)&gt;\]
+
+<p>as basically the operator that advances the state of a quantum system in time. We are interested in knowing how does this operator evolve in time, namely $\frac{d}{dt}U(t,t_0)$.</p>
+
+<p>I’m not sure if it’s better to explain why now, to motivate it, or if if should just find the derivative, and then use it… Let’s motivate it first!</p>
+
+<h4 id="time-derivative-of-a-quantum-operator">Time derivative of a quantum operator</h4>
+
+<p>To calculate the derivative of an operator, we need to compute it as a limit,</p>
+
+\[\frac{d}{dt} \hat{x}(t) = \lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon}(\hat{x}(t+\epsilon) - \hat{x}(t)),\]
+
+<p>meaning that we should apply the operator $\hat{x}(t+\epsilon)$ to a wave function $\psi$ and also apply the operator $\hat{x}(t)$ to the same wave function $\psi$, then subtract and divide by $\epsilon$.</p>
+
+<p>But you see what I’m doing there? I’m hiding things because $\psi$ is a function that depends on time as well, and the operators $\hat{x}(t)$ and $\hat{x}(t+\epsilon)$ can’t act on the function $\psi$ at the same time $t$, since we need to remember that $\hat{x}$ is the operator that when you apply it to a quantum state, it should give you the collapsed <em>position</em> of the particle whose evolution is being described by the probability density $\psi$. Therefore $\hat{x}(t+\epsilon)$ is asking for a measurement of the position of a particle at time $t+\epsilon$, and $\hat{x}(t)$ a measurement at time $t$.</p>
+
+<p>Does that makes sense? You can’t just mix the two operators. We need to include something else. This is where the <strong>Evolution Operator</strong> comes into play. Consider as well the inverse of $U$, $U^\dagger(t,t_0)$ so that</p>
+
+\[U^\dagger(t,t_0) U(t,t_0) = I\]
+
+<p>Intuitively, applying the operator $U^\dagger(t,t_0)$ is like taking a quantum state at time $t$, and looking back in time to $t_0$. The benefit of this is that we can now define properly the application of the position operator at two different times $t+\epsilon$ and $t$.</p>
+
+<p>For example, to sample $\hat{x}(t+\epsilon)$, first evolve the state of the initial quantum system to the time $t+\epsilon$, by applying $U(t+\epsilon,t_0)$:
+\(|\psi(t+\epsilon)&gt; = U(t+\epsilon,t_0) |\psi(t_0)&gt;.\)</p>
+
+<p>Now we can apply the position operator $\bf \hat{x}$ to this state to get the position at time $t+\epsilon$, and then revert back to the time independent state $\psi(t_0)$ by applying the inverse $U^\dagger(t+\epsilon,t_0)$:</p>
+
+\[U^\dagger(t+\epsilon, t_0)\ {\bf \hat{x}}\ U(t+\epsilon, t_0) |\psi(t_0)&gt;\]
+
+<p>The result of this operation would be a scalar for the position $x(t+\epsilon)$ for the collapsed wave function at that position. Equivalently, to get the position at time $t$, all we have to do is compute:
+\(U^\dagger(t,t_0)\ {\bf \hat{x}} \ U(t, t_0) |\psi(t_0)&gt;.\)</p>
+
+<p>Putting things together we obtain that the derivative of $x$ is</p>
+
+<p>\(\lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t)) \psi = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} (U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0)\)
+\(- U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)) \psi(t_0)\)</p>
+
+<p>Let’s use the classic trick of adding and subtracting an intermediary term: $U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)$,</p>
+
+<p>\(\lim\limits_{\epsilon\rightarrow 0} \frac{1}{\epsilon} (\hat{x}(t+\epsilon) - \hat{x}(t)) = \lim\limits_{\epsilon\rightarrow 0}\frac{1}{\epsilon} [U^\dagger(t+\epsilon, t_0)\ \hat{x}\ U(t+\epsilon, t_0) - U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0)\)
+\(+ U^\dagger(t,t_0)\ \hat{x}\ U(t+\epsilon, t_0) - U^\dagger(t, t_0)\ \hat{x}\ U(t, t_0)]\)</p>
+
+<p>\(= \lim\limits_{\epsilon\rightarrow 0}(\frac{U^\dagger(t+\epsilon,t_0) - U^\dagger(t,t_0)}{\epsilon})\ \hat{x}\ U(t+\epsilon,t_0)\)
+\(+ \lim\limits_{\epsilon\rightarrow 0}U^\dagger(t,t_0)\ \hat{x}\ (\frac{U(t+\epsilon,t_0) - U(t,t_0)}{\epsilon})\)</p>
+
+<p>So we recognize the following identity for the evolution of the operator $\hat{x}$:</p>
+
+\[\frac{d}{dt}\hat{x}(t) = \frac{dU^\dagger}{dt}(t,t_0)\ \hat{x}\ U(t,t_0) + U^\dagger(t,t_0)\ \hat{x}\ \frac{dU}{dt}(t,t_0)\]
+
+<h4 id="evolution-of-the-evolution-operator-utt_0">Evolution of the Evolution operator $U(t,t_0)$</h4>
+
+<p>The evolution of an unobserved quantum system is described by the Hamiltonian, so we must find a relationship between $U(t,t_0)$ and $H(t)$. Lets provide the intuition.</p>
+
+<p>Since the eigenvectors of $H$ form a basis for the function space of possible wave functions $\psi(t)$, we can determine $U(t,t_0)$ by computing its effects on each eigenvector. If for example $u_E(t_0)$ is the eigenvector associated with the eigenvalue $E$, then,</p>
+
+\[\hat{H}\ |u_E(t_0)&gt;\ =  E\ |u_E(t_0)&gt;\]
+
+<p>Therefore, since the evolution of a system is given by Schroedinger equation, i.e.</p>
+
+\[i\hbar\frac{d}{dt} u_E(t) = \hat{H}\ u_E(t) = E\ u_E(t)\]
+
+<p>we obtain that $u_E$​ satisfies a simple 1D differential equation. Then</p>
+
+\[|u_E(t)&gt; = e^{-i\omega(t-t_0)}|u_E(t_0)&gt; = e^{-\frac{iE}{\hbar}(t-t_0)}|u_E(t_0)&gt;,\]
+
+<p>where the last equality follows from $E= \hbar\omega$. Looking at that equation, we can recognize what is the “factor” (<em>double entendre</em>, get it?) that evolves $u_E(t_0)$ to $u_E(t)$: $e^{-\frac{iE}{\hbar}(t-t_0)}$, so a good a priory guess for $U(t,t_0)$ is,</p>
+
+\[U(t,t_0) = e^{-i\frac{E}{\hbar}(t,t_0)}\]
+
+<p>since then, $u_E(t) = U(t,t_0) u_E(t_0)$ . Equivalently, one might define more generally $U(t,t_0)$ by looking at the Schroedinger equation re-written in terms of $U$:</p>
+
+\[i\hbar\frac{d}{dt} \psi(t) = H\ \psi(t)\]
+
+\[i\hbar \frac{d}{dt} U(t,t_0)\psi(t_0) = H\ U(t,t_0) \psi(t_0)\]
+
+\[\Rightarrow \left[i\hbar \frac{d}{dt}U(t,t_0) - H\ U(t,t_0)\right]\psi(t_0) = 0\]
+
+<p>Where in the last line we recognize the functional equation:</p>
+
+\[i\hbar \frac{d}{dt}U(t,t_0) = H\ U(t,t_0)\]
+
+<p>which is an equality of operators.</p>
+
+<h4 id="putting-things-together">Putting things together</h4>
+
+<p>Going back to identity for the evolution operator, and replacing this last equality of operators, we obtain that,</p>
+
+\[\frac{d}{dt}\hat{x}(t) = - \frac{1}{i\hbar}U^\dagger(t,t_0) H^\dagger \hat{x}\ U(t,t_0) + U^\dagger(t,t_0)\ \hat{x}\ \frac{1}{i\hbar}H\ U(t,t_0)\]
+
+\[= \frac{1}{i\hbar}(-U^\dagger H {\color{red}UU^\dagger} \hat{x}\ U + U^\dagger\ \hat{x}\ {\color{red}UU^\dagger} H\ U)\]
+
+\[= \frac{1}{i\hbar}[U^\dagger \hat{x} U, U^\dagger H U]\]
+
+\[= \frac{1}{i\hbar}[x(t), H(t)]\]
+
+\[= \frac{\partial H}{\partial p_x}\]
+
+<p>Where we used that $H$ is Hermitian ( $H^\dagger = H$ ), a “multiplying by the identity” trick (in red), and the definition of the commutator to put things in the brackets. The last two lines are key, because we are using that the operators $U^\dagger H U$ and $U^\dagger \hat{x} U$ are just the time independent versions of $H(t),\ x(t)$, so we can reduce them back, and finally use the known commutator properties to get the last line.</p>
+
+<p>Finally, to take the derivative of $H$ with respect to $p$, we will use the Hamiltonian for a particle under a potential $V(x)$,</p>
+
+\[H = \frac{\hat{p}^2}{2m} + \hat{V}(x)\]
+
+<p>Then,</p>
+
+\[\frac{d\hat{x}}{dt} = \frac{\hat{p}_x}{m}\]
+
+<p>which is exactly what we wanted, but we proved it <strong>as operators!</strong></p>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p>Freeman Dyson published Feynman’s argument to derive Maxwell’s equations from Newton’s equation and the basic commutation relations:</p>
+
+\[m\ddot{x} = F(t,x,\dot{x}),\ \text{ and }\ [x,x] = 0,\ m[x,\dot{x}] = i\hbar\]
+
+<p>These assumptions look simple and familiar, but hidden behind them are the profound fundamentals of Quantum Mechanics, and how it differs from Classical Mechanics.</p>
+
+<p>How very tricky of Feynman to hide all the mathematical details to get on with calculating! I can imagine Dyson complaining to Feynman about rigor while Feynman, smiling, would shake his arms and head, impatiently following his [correct] intuition. This image, that may very well be false, makes me smile.</p>
+
+<p>As we learned in this article, there is actually nothing wrong with this “intuitive” approach. All their claims were correct if you understood the context in which they were being discussed, so we can forgive Dyson and Feynman for their wonderfully creative disregard for rigorous mathematics! Specially since you know… they are masters of the subject.</p>
+
+<p>There is a lot of other interesting aspects of this paper that I could write about, but I’ll leave you with this: The approach of the paper is actually incorrect. It’s missing something important as brought up by multiple editorial comments and by Dyson himself:</p>
+
+<p>“<em>The Maxwell equations are relativistically invariant, while the Newtonian assumptions, which Feynman used for his proof, are nonrelativistic. The proof begins with assumptions invariant under Galilean transformations and ends with equations invariant under Lorentz transformations. How could this have happened? After all, it was the incompatibility between Galilean mechanics and Maxwell electrodynamics that led Einstein to special relativity in 1905. Yet here we find Galilean mechanics and Maxwell equations coexisting peacefully. Perhaps it was lucky that Einstein had not seen Feynman’s proof when he started to think about relativity</em>.”</p>
+
+<p>So if this derivation is wrong because it started with nonrelativistic equations, what happens if we start, instead of with Newton’s second law, with Dirac’s equation?</p>
+
+\[E^2 = m^2c^4 + p^2c^2\]
+
+<p>I’m sure it would be super cool to try it.</p>
+
+<hr />
+
+<h4 id="notes">Notes</h4>
+
+<h5 id="general-proof-of-hatp--frachbarifracpartialpartial-x">General proof of $\hat{p} = \frac{\hbar}{i}\frac{\partial}{\partial x}$</h5>
+
+<p>Any wave function can be written as a sum of plane waves (since these are a basis of the space of wave functions):</p>
+
+\[\psi(x) = \frac{1}{(2\pi\hbar)^{\frac{3}{2}}} \int\limits_{\mathbb{R}^3} \Phi(p) e^{ik\cdot x} dp\]
+
+<p>where $\Phi(p)$ is the Fourier transform of $\psi$, so in the general case it is also true that the momentum operator acts like a derivative:
+\(\frac{\hbar}{i}\frac{\partial}{\partial x}\psi = \frac{\hbar}{i}\frac{\partial}{\partial x}\left[\frac{1}{(2\pi\hbar)^{\frac{1}{2}}} \int\limits_{\mathbb{R}} \Phi(p) e^{ik\cdot x} dp\right]\)
+\(= \frac{\hbar}{i}\frac{1}{(2\pi\hbar)^{\frac{1}{2}}} \int\limits_{\mathbb{R}} \Phi(p) \frac{\partial}{\partial x} e^{ik\cdot x} dp\)
+\(= \frac{ik\hbar}{i}\left[\frac{1}{(2\pi\hbar)^{\frac{1}{2}}} \int\limits_{\mathbb{R}} \Phi(p) e^{ik\cdot x} dp\right]\\= k\hbar\ \psi\)
+\(= p\ \psi\)</p>
+
+<p>The derivative goes inside the integral, because the only thing dependent on $x$ is the exponential function, but that one doesn’t change after the derivative, except for the coefficients $ik$, which we pull back outside the integral. We recognize then that $p=k\hbar$ to finish out the proof.</p>
+
+
+      
+			   <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
+<script>
+const GH_API_URL = 'https://api.github.com/repos/aramisentreri/aramisentreri.github.io/issues/1/comments';
+
+let request = new XMLHttpRequest();
+request.open( 'GET', GH_API_URL, true );
+request.onload = function() {
+	if ( this.status >= 200 && this.status < 400 ) {
+		let response = JSON.parse( this.response );
+		
+		for ( var i = 0; i < response.length; i++ ) {
+			document.getElementById( 'gh-comments-list' ).appendChild( createCommentEl( response[ i ] ) );
+		}
+
+		if ( 0 === response.length ) {
+			document.getElementById( 'no-comments-found' ).style.display = 'none';
+		}
+	} else {
+		console.error( this );
+	}
+};
+
+function createCommentEl( response ) {
+	let user = document.createElement( 'a' );
+	user.setAttribute( 'href', response.user.url.replace( 'api.github.com/users', 'github.com' ) );
+	user.classList.add( 'user' );
+
+	let userAvatar = document.createElement( 'img' );
+	userAvatar.classList.add( 'avatar' );
+	userAvatar.setAttribute( 'src', response.user.avatar_url );
+	userAvatar.setAttribute( 'height', '40' );
+	userAvatar.setAttribute( 'width', '40' );
+
+	user.appendChild( userAvatar );
+
+	let commentLink = document.createElement( 'a' );
+	commentLink.setAttribute( 'href', response.html_url );
+	commentLink.classList.add( 'comment-url' );
+	commentLink.innerHTML = '#' + response.id + ' - ' + response.created_at;
+
+	let commentContents = document.createElement( 'div' );
+	commentContents.classList.add( 'comment-content' );
+	commentContents.innerHTML = marked( response.body );
+
+	let comment = document.createElement( 'li' );
+	comment.setAttribute( 'data-created', response.created_at );
+	comment.setAttribute( 'data-author-avatar', response.user.avatar_url );
+	comment.setAttribute( 'data-user-url', response.user.url );
+
+	comment.appendChild( user );
+	comment.appendChild( commentContents );
+	comment.appendChild( commentLink );
+
+	return comment;
+}
+request.send();
+</script>
+
+<hr>
+
+<div class="github-comments">
+	<h2>Comments</h2>
+	<p id="leave-a-comment">Join the discussion for this article by clicking <a href="https://github.com/aramisentreri/aramisentreri.github.io/issues/1">Here</a>. Comments appear on this page instantly.</p>
+	<ul id="gh-comments-list"></ul>
+	<p id="no-comments-found">No comments found for this article.</p>
+
+</div>
+
+	    
+
+      </section>
+
+      <footer>
+        
+        <p>This project is maintained by <a href="https://github.com/aramisentreri">aramisentreri</a></p>
+        
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a>, with little tweaks by Gustavo</small></p>
+      </footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+    
+
+  </body>
+</html>
